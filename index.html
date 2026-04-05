@@ -22,13 +22,20 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
 .site-header .logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--yellow);}
 .site-header .badge{background:var(--yellow);color:var(--black);font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1px;padding:3px 12px;border-radius:3px;}
 
-/* HERO */
-.hero{background:var(--gray-900);padding:40px 24px 36px;text-align:center;border-bottom:1px solid #2a2a2a;position:relative;overflow:hidden;}
-.hero::before{content:'C1';position:absolute;font-family:'Bebas Neue',sans-serif;font-size:280px;color:rgba(245,196,0,0.04);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;line-height:1;}
-.hero-tag{display:inline-block;background:rgba(245,196,0,0.15);border:1px solid rgba(245,196,0,0.3);color:var(--yellow);font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:2px;padding:4px 14px;border-radius:3px;margin-bottom:14px;}
-.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,7vw,58px);letter-spacing:3px;color:var(--white);line-height:1;margin-bottom:10px;}
-.hero h1 span{color:var(--yellow);}
-.hero p{font-size:14px;color:var(--gray-400);max-width:480px;margin:0 auto 22px;}
+.hero-banner{position:relative;width:100%;overflow:hidden;border-bottom:3px solid var(--yellow);}
+.hero-banner img{width:100%;display:block;max-height:320px;object-fit:cover;object-position:left center;}
+.hero-banner-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,14,14,0.6) 0%,rgba(14,14,14,0.15) 60%,transparent 100%);}
+.hero-banner-content{position:absolute;bottom:0;left:0;right:0;padding:18px 24px;background:linear-gradient(0deg,rgba(14,14,14,0.97) 0%,transparent 100%);}
+.hero-banner-tag{display:inline-block;background:var(--yellow);color:var(--black);font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:2px;padding:3px 10px;border-radius:2px;margin-bottom:6px;}
+.hero-banner-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(20px,5vw,38px);letter-spacing:2px;color:var(--white);line-height:1;margin-bottom:5px;}
+.hero-banner-title span{color:var(--yellow);}
+.hero-banner-sub{font-size:12px;color:rgba(255,255,255,0.55);}
+.hero-agenda{display:flex;gap:0;flex-wrap:wrap;padding:0;background:var(--black);border-bottom:1px solid #2a2a2a;}
+.agenda-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--gray-400);padding:10px 16px;border-right:1px solid #2a2a2a;}
+.agenda-item:last-child{border-right:none;}
+.agenda-dot{width:6px;height:6px;border-radius:50%;background:var(--yellow);flex-shrink:0;}
+.agenda-item strong{color:var(--white);font-weight:600;}
+.agenda-item .date{color:var(--yellow-dark);}
 
 /* NAV TABS */
 .nav-tabs{display:flex;background:var(--gray-900);border-bottom:1px solid #2a2a2a;overflow-x:auto;-webkit-overflow-scrolling:touch;}
@@ -191,11 +198,21 @@ footer{text-align:center;padding:32px 16px;font-size:12px;color:#333;border-top:
   <div class="badge">CHALLENGE C1</div>
 </header>
 
-<section class="hero">
-  <div class="hero-tag">ÉTUDE DE SECTEUR & STRATÉGIE — 03 AU 13 AVRIL 2026</div>
-  <h1>TON KIT<br><span>CHALLENGE C1</span></h1>
-  <p>Stratégie, analyse de ton temps, étude de secteur et tous les outils. À faire en autonomie après le Kick-Off.</p>
+<section class="hero-banner">
+  <img src="https://raw.githubusercontent.com/lanconmat/kickoff-challenge-1/main/banner.jpg" alt="Challenge C1 — Étude de Secteur & Stratégie" onerror="this.style.display='none'"/>
+  <div class="hero-banner-overlay"></div>
+  <div class="hero-banner-content">
+    <div class="hero-banner-tag">CHALLENGE C1 — TON KIT COMPLET</div>
+    <div class="hero-banner-title">ÉTUDE DE SECTEUR<br><span>& STRATÉGIE</span></div>
+    <div class="hero-banner-sub">03 – 13 Avril 2026 · Mathieu, Caroline & Aubin</div>
+  </div>
 </section>
+<div class="hero-agenda">
+  <div class="agenda-item"><div class="agenda-dot"></div><strong>Warm Up</strong><span class="date">03 Avr · 12h30</span></div>
+  <div class="agenda-item"><div class="agenda-dot"></div><strong>Kick-Off</strong><span class="date">06 Avr · 20h00</span></div>
+  <div class="agenda-item"><div class="agenda-dot"></div><strong>Live Q&A</strong><span class="date">09 Avr · 20h00</span></div>
+  <div class="agenda-item"><div class="agenda-dot"></div><strong>Live Final</strong><span class="date">13 Avr · 20h00</span></div>
+</div>
 
 <nav class="nav-tabs">
   <button class="nav-tab active" onclick="goTab('strategie',this)">01 — Stratégie</button>
@@ -239,10 +256,10 @@ footer{text-align:center;padding:32px 16px;font-size:12px;color:#333;border-top:
 
   <div class="slabel">Fonds propres — à quel niveau tu peux jouer ?</div>
   <div class="card">
-    <div class="directive"><div class="dir-num" style="font-size:20px;min-width:36px;">&lt;20K</div><div style="font-size:13px;color:#888;">Très limité. Participation à un projet de loin, ou très petite opération. Priorité : trouver un associé ou de la love money.</div></div>
-    <div class="directive"><div class="dir-num" style="font-size:20px;min-width:36px;">20-50K</div><div style="font-size:13px;color:#888;">Minimum IDF. Petit appartement, studio, achat-revente simple. Hors association c'est le seuil de départ.</div></div>
-    <div class="directive"><div class="dir-num" style="font-size:20px;min-width:36px;">50-150K</div><div style="font-size:13px;color:#888;">Zone de confort. Maison à rénover, division, petite copro. Tu as une vraie force de frappe.</div></div>
-    <div class="directive"><div class="dir-num" style="font-size:20px;min-width:36px;">150K+</div><div style="font-size:13px;color:#888;">Immeuble de rapport, division structurée, plusieurs lots. Tu peux envisager plusieurs opérations simultanées.</div></div>
+    <div class="directive"><div class="dir-num" style="font-size:20px;min-width:36px;">&lt;20K</div><div style="font-size:13px;color:#888;">Très limité selon ton secteur. Priorité : trouver un associé, de la love money ou un financement. Ça ne veut pas dire que c'est impossible — ça veut dire qu'il faut être malin sur le montage.</div></div>
+    <div class="directive"><div class="dir-num" style="font-size:20px;min-width:36px;">20-50K</div><div style="font-size:13px;color:#888;">Seuil de départ dans beaucoup de secteurs. Petite opération achat-revente, studio, appartement simple. Suffisant pour démarrer seul selon ton marché local.</div></div>
+    <div class="directive"><div class="dir-num" style="font-size:20px;min-width:36px;">50-150K</div><div style="font-size:13px;color:#888;">Bonne force de frappe. Maison à rénover, division, petite copro. Tu peux te positionner sur des opérations plus structurées selon ton secteur.</div></div>
+    <div class="directive"><div class="dir-num" style="font-size:20px;min-width:36px;">150K+</div><div style="font-size:13px;color:#888;">Immeuble de rapport, division structurée, plusieurs lots simultanés. Attention à ne pas immobiliser tout ton capital sur une seule opération.</div></div>
   </div>
 </div>
 
@@ -459,7 +476,7 @@ footer{text-align:center;padding:32px 16px;font-size:12px;color:#333;border-top:
 
   <div class="slabel">L'Article clé — L152-6</div>
   <div class="highlight-box" style="margin-bottom:10px;">
-    Dans un rayon de 500m d'une gare RER ou d'un métro, tu peux diviser un bien <strong>sans justifier de places de stationnement</strong>. Tu es sur du droit privé — pas de permis, pas de DP. C'est l'article le plus puissant pour les marchands de biens en IDF.
+    Dans un rayon de 500m d'une gare ou d'une station de transport en commun, tu peux diviser un bien <strong>sans justifier de places de stationnement</strong>. Tu es sur du droit privé — pas de permis, pas de DP. Vérifie si ta commune est concernée : c'est l'un des articles les plus puissants pour un marchand de biens en zone bien desservie.
   </div>
   <div class="loi-card">
     <div class="loi-title">Article L151-36 — Logements classiques</div>
@@ -468,7 +485,7 @@ footer{text-align:center;padding:32px 16px;font-size:12px;color:#333;border-top:
   </div>
   <div class="loi-card">
     <div class="loi-title">Article L152-6 — Dérogation totale en zone tendue</div>
-    <div class="loi-desc">Dérogation possible à l'obligation de stationnement dans un rayon de 500m d'une gare ou station de transport en commun. Le plus utilisé par les marchands de biens en IDF pour les divisions.</div>
+    <div class="loi-desc">Dérogation possible à l'obligation de stationnement dans un rayon de 500m d'une gare ou station de transport en commun. À vérifier selon ta commune — très puissant dès que tu es en zone bien desservie par les transports.</div>
     <a class="loi-link" href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043978020/2021-08-25" target="_blank">Lire sur Légifrance →</a>
   </div>
 
@@ -557,7 +574,7 @@ footer{text-align:center;padding:32px 16px;font-size:12px;color:#333;border-top:
   </div>
   <div class="loi-card">
     <div class="loi-title">Article L152-6 — Dérogation totale en zone tendue</div>
-    <div class="loi-desc">Dans un rayon de 500m d'une gare ou station de transport en commun, dérogation possible à l'obligation de stationnement. L'article clé pour les marchands de biens en IDF. Pas de permis, pas de DP — droit privé.</div>
+    <div class="loi-desc">Dans un rayon de 500m d'une gare ou station de transport en commun, dérogation possible à l'obligation de stationnement. Pas de permis, pas de DP — tu es sur du droit privé. À vérifier selon ta commune et son plan local d'urbanisme.</div>
     <a class="loi-link" href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043978020/2021-08-25" target="_blank">Lire sur Légifrance →</a>
   </div>
 
