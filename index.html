@@ -10,7 +10,1267 @@
 :root{
   --yellow:#F5C400;--yellow-dark:#B8920A;--black:#0E0E0E;
   --gray-900:#1A1A1A;--gray-800:#242424;--gray-700:#333;
+  --gray-400:#88<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Challenge C1 — Stratégie & Étude de Secteur | L'Incubateur</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --yellow:#F5C400;--yellow-dark:#B8920A;--black:#0E0E0E;
+  --gray-900:#1A1A1A;--gray-800:#242424;--gray-700:#333;
   --gray-400:#888;--gray-200:#D0D0D0;--gray-100:#F2F2F2;
+  --white:#FFFFFF;--green:#1D9E75;--blue:#378ADD;
+  --pink:#D4537E;--orange:#E07B20;--radius:10px;--radius-sm:6px;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;min-height:100vh;}
+
+/* HEADER */
+.site-header{background:var(--gray-900);border-bottom:1px solid #2a2a2a;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:100;}
+.site-header .logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--yellow);}
+.site-header .badge{background:var(--yellow);color:var(--black);font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1px;padding:3px 12px;border-radius:3px;}
+
+.hero-banner{position:relative;width:100%;overflow:hidden;border-bottom:3px solid var(--yellow);}
+.hero-banner img{width:100%;display:block;max-height:320px;object-fit:cover;object-position:left center;}
+.hero-banner-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,14,14,0.6) 0%,rgba(14,14,14,0.15) 60%,transparent 100%);}
+.hero-banner-content{position:absolute;bottom:0;left:0;right:0;padding:18px 24px;background:linear-gradient(0deg,rgba(14,14,14,0.97) 0%,transparent 100%);}
+.hero-banner-tag{display:inline-block;background:var(--yellow);color:var(--black);font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:2px;padding:3px 10px;border-radius:2px;margin-bottom:6px;}
+.hero-banner-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(20px,5vw,38px);letter-spacing:2px;color:var(--white);line-height:1;margin-bottom:5px;}
+.hero-banner-title span{color:var(--yellow);}
+.hero-banner-sub{font-size:12px;color:rgba(255,255,255,0.55);}
+.hero-agenda{display:flex;gap:0;flex-wrap:wrap;padding:0;background:var(--black);border-bottom:1px solid #2a2a2a;}
+.agenda-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--gray-400);padding:10px 16px;border-right:1px solid #2a2a2a;}
+.agenda-item:last-child{border-right:none;}
+.agenda-dot{width:6px;height:6px;border-radius:50%;background:var(--yellow);flex-shrink:0;}
+.agenda-item strong{color:var(--white);font-weight:600;}
+.agenda-item .date{color:var(--yellow-dark);}
+
+/* NAV TABS */
+.nav-tabs{display:flex;background:var(--gray-900);border-bottom:1px solid #2a2a2a;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.nav-tab{flex:none;padding:14px 20px;font-size:13px;font-weight:500;color:var(--gray-400);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;white-space:nowrap;font-family:'DM Sans',sans-serif;background:none;border-top:none;border-left:none;border-right:none;}
+.nav-tab.active{color:var(--yellow);border-bottom-color:var(--yellow);}
+.nav-tab:hover:not(.active){color:var(--white);}
+
+/* MAIN */
+.main{max-width:720px;margin:0 auto;padding:28px 16px 80px;}
+.pane{display:none;}.pane.active{display:block;}
+
+/* SECTION LABEL */
+.slabel{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:2.5px;color:var(--gray-400);margin-bottom:10px;margin-top:28px;}
+.slabel:first-child{margin-top:0;}
+
+/* CARD */
+.card{background:var(--gray-900);border:1px solid #2a2a2a;border-radius:var(--radius);padding:20px;margin-bottom:14px;}
+.card-yellow{border-color:rgba(245,196,0,0.25);}
+.card-green{border-color:rgba(29,158,117,0.25);}
+
+/* FORM */
+.field-row{display:grid;grid-template-columns:120px 1fr auto;gap:10px;align-items:center;margin-bottom:10px;}
+.field-row.no-out{grid-template-columns:120px 1fr;}
+.field-label{font-size:13px;color:var(--gray-400);}
+.si{background:var(--gray-800);border:1px solid #333;border-radius:var(--radius-sm);padding:8px 12px;font-size:13px;color:var(--white);font-family:'DM Sans',sans-serif;width:100%;transition:border-color 0.15s;appearance:none;-webkit-appearance:none;}
+.si:focus{outline:none;border-color:var(--yellow);}
+select.si{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px;cursor:pointer;}
+input[type=time].si{cursor:pointer;}
+.h-out{font-size:13px;font-weight:500;color:var(--gray-400);min-width:48px;text-align:right;}
+.h-out.on{color:var(--yellow-dark);}
+.sep{border:none;border-top:1px solid #2a2a2a;margin:16px 0;}
+
+/* TIMELINE */
+.tl-wrap{background:var(--gray-900);border:1px solid #2a2a2a;border-radius:var(--radius);padding:20px;margin-bottom:14px;}
+.tl-title{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--gray-400);margin-bottom:12px;}
+.legend-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px;}
+.leg{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--gray-400);}
+.leg-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0;}
+.tl-day{margin-bottom:10px;}
+.tl-day-label{font-size:11px;color:var(--gray-400);font-weight:500;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px;}
+.tl-bar-wrap{position:relative;height:20px;background:var(--gray-800);border-radius:4px;overflow:hidden;}
+.tl-seg{position:absolute;top:0;height:100%;border-radius:2px;}
+.tl-seg.work{background:#444;}
+.tl-seg.trajet{background:var(--orange);opacity:0.8;}
+.tl-seg.mdb{background:var(--yellow);}
+.tl-hours{display:flex;justify-content:space-between;margin-top:3px;}
+.tl-hour{font-size:10px;color:#444;}
+
+/* WE GRID */
+.we-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.we-col{background:var(--gray-800);border-radius:var(--radius-sm);padding:14px;}
+.we-col-title{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:1px;color:var(--gray-400);margin-bottom:10px;}
+
+/* RESULTS */
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
+.rc{background:var(--gray-800);border-radius:var(--radius-sm);padding:12px 14px;}
+.rc.full{grid-column:1/-1;}
+.rc-label{font-size:11px;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;}
+.rc-val{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--white);line-height:1;}
+.rc-val.yellow{color:var(--yellow);}
+.tip-box{background:rgba(245,196,0,0.08);border:1px solid rgba(245,196,0,0.2);border-radius:var(--radius-sm);padding:12px 16px;font-size:13px;color:rgba(245,196,0,0.85);margin-top:12px;line-height:1.6;}
+
+/* STEP 1 */
+.app-link{display:flex;align-items:center;gap:14px;background:var(--gray-800);border:1px solid rgba(245,196,0,0.3);border-radius:var(--radius);padding:16px;text-decoration:none;transition:border-color 0.2s;margin:14px 0;}
+.app-link:hover{border-color:var(--yellow);}
+.app-link-icon{width:44px;height:44px;min-width:44px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:14px;color:var(--black);letter-spacing:1px;}
+.app-link-text{font-size:14px;font-weight:600;color:var(--white);}
+.app-link-url{font-size:12px;color:var(--gray-400);margin-top:2px;}
+.directive{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid #2a2a2a;font-size:13px;color:rgba(255,255,255,0.75);line-height:1.55;}
+.directive:last-child{border-bottom:none;}
+.dir-num{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--yellow);min-width:28px;line-height:1;}
+.profil-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;}
+.profil-tag{background:var(--gray-800);border:1px solid #333;border-radius:var(--radius-sm);padding:12px;font-size:12px;color:var(--gray-400);line-height:1.5;}
+.profil-tag strong{display:block;font-size:13px;font-weight:600;color:var(--white);margin-bottom:3px;}
+
+/* AGENDA */
+.agenda-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
+.agenda-col{background:var(--gray-800);border-radius:var(--radius-sm);padding:14px;}
+.agenda-col-title{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1.5px;color:var(--gray-400);margin-bottom:10px;}
+.bloc{border-radius:5px;padding:8px 10px;margin-bottom:7px;font-size:12px;line-height:1.45;}
+.bloc strong{display:block;font-size:13px;font-weight:600;margin-bottom:1px;}
+.bloc.reseau{background:rgba(245,196,0,0.12);border-left:3px solid var(--yellow);color:rgba(245,196,0,0.9);}
+.bloc.analyse{background:rgba(29,158,117,0.12);border-left:3px solid var(--green);color:rgba(29,158,117,0.95);}
+.bloc.formation{background:rgba(55,138,221,0.12);border-left:3px solid var(--blue);color:rgba(55,138,221,0.95);}
+.bloc.cerveau{background:rgba(136,135,128,0.15);border-left:3px solid #666;color:rgba(200,200,200,0.8);}
+.bloc.perso{background:rgba(212,83,126,0.12);border-left:3px solid var(--pink);color:rgba(212,83,126,0.9);}
+.bloc-custom{border-radius:5px;padding:8px 10px;margin-bottom:7px;background:var(--gray-700);border:1px dashed #444;}
+.bloc-custom select,.bloc-custom input{background:transparent;border:none;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--gray-200);width:100%;outline:none;appearance:none;}
+.bloc-custom input::placeholder{color:#555;}
+.add-btn{width:100%;background:transparent;border:1px dashed #444;border-radius:5px;padding:7px;font-size:12px;color:#555;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s;margin-top:4px;}
+.add-btn:hover{border-color:var(--yellow);color:var(--yellow);}
+.bilan-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.bilan-card{background:var(--gray-800);border-radius:var(--radius-sm);padding:12px;}
+.bilan-label{font-size:11px;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;}
+.bilan-input{background:transparent;border:none;border-bottom:1px solid #333;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--white);width:100%;outline:none;padding-bottom:4px;}
+.bilan-input::placeholder{color:#555;}
+.engagement-input{background:var(--gray-800);border:1px solid #333;border-radius:var(--radius-sm);padding:10px 14px;font-size:13px;color:var(--white);font-family:'DM Sans',sans-serif;width:100%;margin-bottom:10px;outline:none;transition:border-color 0.15s;}
+.engagement-input:focus{border-color:var(--yellow);}
+.engagement-input::placeholder{color:#555;}
+
+/* ============ ÉTUDE DE SECTEUR ============ */
+.tip-card{background:var(--gray-900);border:1px solid #2a2a2a;border-radius:var(--radius);padding:18px 20px;margin-bottom:10px;}
+.tip-card-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:10px;}
+.tip-num{font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--yellow);line-height:1;min-width:42px;}
+.tip-title{font-size:15px;font-weight:600;color:var(--white);margin-bottom:3px;}
+.tip-desc{font-size:13px;color:var(--gray-400);line-height:1.6;}
+.tip-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+.tag{display:inline-block;font-size:11px;padding:3px 10px;border-radius:3px;font-weight:500;}
+.tag.yellow{background:rgba(245,196,0,0.15);color:var(--yellow);border:1px solid rgba(245,196,0,0.2);}
+.tag.green{background:rgba(29,158,117,0.15);color:var(--green);border:1px solid rgba(29,158,117,0.2);}
+.tag.blue{background:rgba(55,138,221,0.15);color:var(--blue);border:1px solid rgba(55,138,221,0.2);}
+.tag.gray{background:rgba(136,135,128,0.15);color:#aaa;border:1px solid rgba(136,135,128,0.2);}
+.tag.orange{background:rgba(224,123,32,0.15);color:var(--orange);border:1px solid rgba(224,123,32,0.2);}
+.tag.pink{background:rgba(212,83,126,0.15);color:var(--pink);border:1px solid rgba(212,83,126,0.2);}
+.kw-list{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px;}
+.kw{background:var(--gray-800);border:1px solid #333;border-radius:20px;font-size:12px;color:var(--gray-200);padding:3px 12px;font-family:'DM Sans',sans-serif;}
+.loi-card{background:var(--gray-800);border-radius:var(--radius-sm);padding:14px 16px;margin-bottom:8px;border-left:3px solid var(--yellow);}
+.loi-title{font-size:14px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.loi-desc{font-size:12px;color:var(--gray-400);line-height:1.55;margin-bottom:8px;}
+.loi-link{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--yellow);text-decoration:none;}
+.loi-link:hover{text-decoration:underline;}
+.highlight-box{background:rgba(245,196,0,0.07);border:1px solid rgba(245,196,0,0.2);border-radius:var(--radius-sm);padding:14px 16px;font-size:13px;color:rgba(245,196,0,0.85);line-height:1.6;margin-bottom:14px;}
+
+/* LIENS UTILES */
+.links-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.link-card{background:var(--gray-900);border:1px solid #2a2a2a;border-radius:var(--radius);padding:16px;text-decoration:none;transition:border-color 0.2s;display:block;}
+.link-card:hover{border-color:var(--yellow);}
+.link-card-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:13px;margin-bottom:10px;}
+.link-card-title{font-size:14px;font-weight:600;color:var(--white);margin-bottom:3px;}
+.link-card-desc{font-size:12px;color:var(--gray-400);line-height:1.5;}
+.link-card-url{font-size:11px;color:#444;margin-top:6px;}
+.yt-card{background:var(--gray-900);border:1px solid #2a2a2a;border-radius:var(--radius);padding:14px 16px;margin-bottom:8px;display:flex;align-items:center;gap:14px;text-decoration:none;transition:border-color 0.2s;}
+.yt-card:hover{border-color:rgba(255,80,80,0.4);}
+.yt-icon{width:38px;height:38px;min-width:38px;background:rgba(255,80,80,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;}
+.yt-title{font-size:13px;font-weight:600;color:var(--white);margin-bottom:2px;}
+.yt-sub{font-size:12px;color:var(--gray-400);}
+.section-divider{display:flex;align-items:center;gap:12px;margin:24px 0 16px;}
+.section-divider-line{flex:1;height:1px;background:#2a2a2a;}
+.section-divider-label{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:2px;color:var(--gray-400);white-space:nowrap;}
+
+/* CHECKLIST */
+.checklist-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.checklist-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1.5px;color:var(--white);}
+.progress-wrap{background:var(--gray-800);border-radius:20px;height:6px;overflow:hidden;margin-bottom:4px;}
+.progress-bar{height:100%;background:var(--yellow);border-radius:20px;transition:width 0.3s;}
+.progress-label{font-size:12px;color:var(--gray-400);text-align:right;}
+.cl-group{margin-bottom:20px;}
+.cl-group-title{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--yellow);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid rgba(245,196,0,0.2);}
+.cl-item{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid #1e1e1e;cursor:pointer;transition:opacity 0.15s;}
+.cl-item:last-child{border-bottom:none;}
+.cl-item:hover{opacity:0.85;}
+.cl-item.done .cl-text{color:var(--gray-400);text-decoration:line-through;}
+.cl-item.done .cl-box{background:var(--yellow);border-color:var(--yellow);}
+.cl-item.done .cl-check{opacity:1;}
+.cl-box{width:20px;height:20px;min-width:20px;border-radius:4px;border:1.5px solid #444;display:flex;align-items:center;justify-content:center;transition:all 0.2s;margin-top:1px;}
+.cl-check{opacity:0;font-size:11px;color:var(--black);font-weight:700;}
+.cl-content{flex:1;}
+.cl-num{font-family:'Bebas Neue',sans-serif;font-size:11px;color:var(--gray-400);letter-spacing:1px;margin-bottom:1px;}
+.cl-text{font-size:13px;color:var(--white);line-height:1.5;font-weight:500;}
+.cl-sub{font-size:12px;color:var(--gray-400);line-height:1.5;margin-top:3px;}
+.cl-reset{background:transparent;border:1px solid #333;border-radius:var(--radius-sm);padding:6px 14px;font-size:12px;color:var(--gray-400);cursor:pointer;font-family:'DM Sans',sans-serif;transition:all 0.15s;}
+.cl-reset:hover{border-color:var(--yellow);color:var(--yellow);}
+.cl-congrats{background:rgba(245,196,0,0.08);border:1px solid rgba(245,196,0,0.25);border-radius:var(--radius);padding:16px 20px;text-align:center;display:none;margin-top:16px;}
+.cl-congrats-title{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--yellow);letter-spacing:2px;margin-bottom:4px;}
+.cl-congrats-sub{font-size:13px;color:var(--gray-400);}
+
+.dl-btn{display:flex;align-items:center;gap:12px;border-radius:var(--radius);padding:14px;text-decoration:none;transition:opacity 0.2s;border:1px solid #333;}
+.dl-btn:hover{opacity:0.85;}
+.dl-btn.dl-green{background:rgba(29,158,117,0.1);border-color:rgba(29,158,117,0.3);}
+.dl-btn.dl-yellow{background:rgba(245,196,0,0.1);border-color:rgba(245,196,0,0.3);}
+.dl-icon{width:42px;height:42px;min-width:42px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1px;}
+.dl-btn.dl-green .dl-icon{background:rgba(29,158,117,0.2);color:var(--green);}
+.dl-btn.dl-yellow .dl-icon{background:rgba(245,196,0,0.2);color:var(--yellow);}
+.dl-title{font-size:13px;font-weight:600;color:var(--white);margin-bottom:2px;}
+.dl-sub{font-size:11px;color:var(--gray-400);line-height:1.4;}
+.tool-tabs{display:flex;gap:0;border-bottom:1px solid #2a2a2a;margin-bottom:1.25rem;overflow-x:auto;}
+.tool-tab{flex:none;padding:8px 16px;font-size:12px;font-weight:500;color:var(--gray-400);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.15s;background:none;border-top:none;border-left:none;border-right:none;font-family:'DM Sans',sans-serif;white-space:nowrap;}
+.tool-tab.active{color:var(--yellow);border-bottom-color:var(--yellow);font-weight:600;}
+.tool-tab:hover:not(.active){color:var(--white);}
+.kw-list{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;}
+.kw{background:var(--gray-800);border:1px solid #333;border-radius:20px;font-size:12px;color:var(--gray-200);padding:3px 12px;}
+.tip-note-secteur{background:rgba(245,196,0,0.08);border:1px solid rgba(245,196,0,0.2);border-radius:var(--radius-sm);padding:12px 16px;font-size:13px;color:rgba(245,196,0,0.85);margin-bottom:14px;line-height:1.6;}
+.grille-table{width:100%;border-collapse:collapse;font-size:12px;min-width:580px;}
+.grille-table th{background:#111;color:#fff;padding:8px 6px;text-align:center;font-size:11px;font-weight:600;line-height:1.4;}
+.grille-table th.gt-type{text-align:left;padding-left:10px;min-width:130px;}
+.grille-table th.gt-avg{background:var(--blue);color:#fff;}
+.grille-table td{padding:5px 6px;border:0.5px solid #2a2a2a;vertical-align:middle;}
+.grille-table td.gt-label{font-size:12px;font-weight:600;color:var(--white);background:var(--gray-900);padding-left:8px;}
+.grille-table td.gt-cell{background:rgba(245,196,0,0.05);text-align:center;}
+.grille-table td.gt-cell input{width:70px;background:transparent;border:1px solid #333;border-radius:4px;padding:4px;font-size:12px;text-align:center;color:var(--white);font-family:'DM Sans',sans-serif;}
+.grille-table td.gt-cell input:focus{outline:none;border-color:var(--yellow);}
+.grille-table td.gt-avg-val{background:var(--blue);color:#fff;font-weight:700;text-align:center;font-size:13px;}
+.profil-item-s{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #2a2a2a;}
+.profil-item-s:last-child{border-bottom:none;}
+.profil-bar-bg{flex:1;height:6px;background:#2a2a2a;border-radius:3px;overflow:hidden;}
+.profil-bar-fg{height:100%;border-radius:3px;transition:width 0.3s;}
+.profil-pct-inp{width:52px;background:var(--gray-800);border:1px solid #333;border-radius:4px;padding:4px 6px;font-size:13px;font-weight:700;text-align:center;color:var(--white);font-family:'DM Sans',sans-serif;}
+.profil-pct-inp:focus{outline:none;border-color:var(--yellow);}
+.total-marche{background:var(--yellow);color:var(--black);font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;padding:10px 16px;border-radius:var(--radius-sm);margin-top:12px;text-align:center;}
+.total-marche.warn{background:var(--red,#E24B4A);color:#fff;}
+/* NAV BTN */
+.nav-btn{display:inline-block;background:var(--yellow);color:var(--black);font-weight:700;font-size:14px;font-family:'DM Sans',sans-serif;border:none;border-radius:var(--radius-sm);padding:12px 28px;cursor:pointer;margin-top:16px;transition:opacity 0.15s;}
+.nav-btn:hover{opacity:0.88;}
+
+/* FOOTER */
+footer{text-align:center;padding:32px 16px;font-size:12px;color:#333;border-top:1px solid #1a1a1a;}
+
+@media(max-width:520px){
+  .field-row{grid-template-columns:100px 1fr;}.field-row .h-out{display:none;}
+  .we-grid,.agenda-grid,.result-grid,.profil-grid,.bilan-grid,.links-grid{grid-template-columns:1fr;}
+  .hero h1{font-size:36px;}
+  .nav-tab{padding:12px 14px;font-size:12px;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">L'INCUBATEUR</div>
+  <div class="badge">CHALLENGE C1</div>
+</header>
+
+<section class="hero-banner">
+  <img src="https://raw.githubusercontent.com/lanconmat/kickoff-challenge-1/main/banner.jpg" alt="Challenge C1 — Étude de Secteur & Stratégie" onerror="this.style.display='none'"/>
+  <div class="hero-banner-overlay"></div>
+  <div class="hero-banner-content">
+    <div class="hero-banner-tag">CHALLENGE C1 — TON KIT COMPLET</div>
+    <div class="hero-banner-title">ÉTUDE DE SECTEUR<br><span>& STRATÉGIE</span></div>
+    <div class="hero-banner-sub">03 – 13 Avril 2026 · Mathieu, Caroline & Aubin</div>
+  </div>
+</section>
+<div class="hero-agenda">
+  <div class="agenda-item"><div class="agenda-dot"></div><strong>Warm Up</strong><span class="date">03 Avr · 12h30</span></div>
+  <div class="agenda-item"><div class="agenda-dot"></div><strong>Kick-Off</strong><span class="date">06 Avr · 20h00</span></div>
+  <div class="agenda-item"><div class="agenda-dot"></div><strong>Live Q&A</strong><span class="date">09 Avr · 20h00</span></div>
+  <div class="agenda-item"><div class="agenda-dot"></div><strong>Live Final</strong><span class="date">13 Avr · 20h00</span></div>
+</div>
+
+<nav class="nav-tabs">
+  <button class="nav-tab active" onclick="goTab('strategie',this)">01 — Stratégie</button>
+  <button class="nav-tab" onclick="goTab('temps',this)">02 — Mon temps</button>
+  <button class="nav-tab" onclick="goTab('agenda',this)">03 — Mon agenda</button>
+  <button class="nav-tab" onclick="goTab('secteur',this)">04 — Étude de secteur</button>
+  <button class="nav-tab" onclick="goTab('checklist',this)">05 — Ma checklist</button>
+</nav>
+
+<main class="main">
+
+<!-- ===== 01 STRATÉGIE ===== -->
+<div id="tab-strategie" class="pane active">
+  <div class="slabel">Ton point de départ</div>
+  <div class="card">
+    <p style="font-size:13px;color:#888;line-height:1.6;margin-bottom:4px;">Remplis ce questionnaire seul, honnêtement. 5 minutes. Il établit ton profil investisseur et identifie tes forces et axes à travailler. Reviens ici une fois ton profil obtenu.</p>
+    <a class="app-link" href="https://app-marchand-de-biens.onrender.com/" target="_blank">
+      <div class="app-link-icon" style="background:var(--yellow);">MDB</div>
+      <div>
+        <div class="app-link-text">Questionnaire — Profil Marchand de Biens</div>
+        <div class="app-link-url">app-marchand-de-biens.onrender.com</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="slabel">Exploiter ton profil — 4 directives</div>
+  <div class="card">
+    <div class="directive"><div class="dir-num">1</div><div><strong style="color:#fff;">Lis ton profil type</strong> — note ton niveau de capital, d'expérience, de réseau et de temps disponible.</div></div>
+    <div class="directive"><div class="dir-num">2</div><div><strong style="color:#fff;">Identifie ton point le plus faible</strong> — ce sera ton axe prioritaire pour les 10 prochains jours. Pas les 4, juste le principal.</div></div>
+    <div class="directive"><div class="dir-num">3</div><div><strong style="color:#fff;">Note ta stratégie recommandée</strong> — le questionnaire suggère un type d'opération adapté. C'est ton point de départ pour choisir quel type de bien chercher.</div></div>
+    <div class="directive"><div class="dir-num">4</div><div><strong style="color:#fff;">Sois honnête sur ton capital</strong> — moins de 20K€, 20-50K€, 50-150K€ ? Ce chiffre conditionne tout. Il n'y a pas de mauvaise réponse, juste une stratégie à adapter.</div></div>
+  </div>
+
+  <div class="slabel">Les 4 profils types</div>
+  <div class="profil-grid">
+    <div class="profil-tag"><strong>Débutant structuré</strong>Peu de capital, peu d'expérience. Priorité : formation, réseau, première petite op.</div>
+    <div class="profil-tag"><strong>Stratège en développement</strong>Bons atouts mais réseau faible. Priorité : réseau pro + première op rapide.</div>
+    <div class="profil-tag"><strong>Investisseur actif</strong>Capital et expérience présents. Priorité : optimiser le temps, déléguer, accélérer.</div>
+    <div class="profil-tag"><strong>Opérateur confirmé</strong>Multi-opérations. Priorité : associés, financement, volumétrie.</div>
+  </div>
+
+  <div class="slabel">Fonds propres — à quel niveau tu peux jouer ?</div>
+  <div class="card">
+    <div class="directive"><div class="dir-num" style="font-size:20px;min-width:36px;">&lt;20K</div><div style="font-size:13px;color:#888;">Très limité selon ton secteur. Priorité : trouver un associé, de la love money ou un financement. Ça ne veut pas dire que c'est impossible — ça veut dire qu'il faut être malin sur le montage.</div></div>
+    <div class="directive"><div class="dir-num" style="font-size:20px;min-width:36px;">20-50K</div><div style="font-size:13px;color:#888;">Seuil de départ dans beaucoup de secteurs. Petite opération achat-revente, studio, appartement simple. Suffisant pour démarrer seul selon ton marché local.</div></div>
+    <div class="directive"><div class="dir-num" style="font-size:20px;min-width:36px;">50-150K</div><div style="font-size:13px;color:#888;">Bonne force de frappe. Maison à rénover, division, petite copro. Tu peux te positionner sur des opérations plus structurées selon ton secteur.</div></div>
+    <div class="directive"><div class="dir-num" style="font-size:20px;min-width:36px;">150K+</div><div style="font-size:13px;color:#888;">Immeuble de rapport, division structurée, plusieurs lots simultanés. Attention à ne pas immobiliser tout ton capital sur une seule opération.</div></div>
+  </div>
+</div>
+
+<!-- ===== 02 MON TEMPS ===== -->
+<div id="tab-temps" class="pane">
+  <div class="slabel">Mes horaires de travail</div>
+  <div class="card">
+    <div class="field-row no-out"><div class="field-label">Jours travaillés</div><select class="si" id="jours" onchange="calc()"><option value="5">5 jours (Lun→Ven)</option><option value="4.5">4,5 jours</option><option value="4">4 jours</option><option value="3">3 jours</option><option value="2">2 jours (mi-temps)</option></select></div>
+    <div class="field-row no-out"><div class="field-label">Heure début</div><input type="time" class="si" id="heure-debut" value="09:00" onchange="calc()"/></div>
+    <div class="field-row no-out"><div class="field-label">Heure fin</div><input type="time" class="si" id="heure-fin" value="18:00" onchange="calc()"/></div>
+    <div class="field-row no-out"><div class="field-label">Télétravail</div><select class="si" id="teletravail" onchange="calc()"><option value="0">Jamais</option><option value="1">1 jour / semaine</option><option value="2">2 jours / semaine</option><option value="5">Full remote</option></select></div>
+  </div>
+
+  <div class="slabel">Mes trajets</div>
+  <div class="card">
+    <div class="field-row"><div class="field-label">Trajet aller</div><select class="si" id="tm" onchange="calc()"><option value="0">Voiture (je conduis)</option><option value="0.5">Transports passif — 30 min</option><option value="0.75">Transports passif — 45 min</option><option value="1">Transports passif — 1h</option><option value="0">Trottinette / vélo</option></select><div class="h-out" id="out-tm">—</div></div>
+    <div class="field-row"><div class="field-label">Trajet retour</div><select class="si" id="ts" onchange="calc()"><option value="0">Voiture (je conduis)</option><option value="0.5">Transports passif — 30 min</option><option value="0.75">Transports passif — 45 min</option><option value="1">Transports passif — 1h</option><option value="0">Trottinette / vélo</option></select><div class="h-out" id="out-ts">—</div></div>
+  </div>
+
+  <div class="slabel">Créneaux libres en semaine</div>
+  <div class="card">
+    <div class="field-row"><div class="field-label">Pause déjeuner</div><select class="si" id="pause" onchange="calc()"><option value="0">10-15 min (vite fait)</option><option value="0.25">30 min exploitable</option><option value="0.5">45 min exploitable</option></select><div class="h-out" id="out-pause">—</div></div>
+    <div class="field-row"><div class="field-label">Soirée dispo</div><select class="si" id="soir" onchange="calc()"><option value="0">Rien (famille, fatigue)</option><option value="1">1h disponible</option><option value="1.5">1h30</option><option value="2">2h+</option></select><div class="h-out" id="out-soir">—</div></div>
+    <div class="field-row"><div class="field-label">Nb soirées / sem</div><select class="si" id="nb-soir" onchange="calc()"><option value="1">1 soir</option><option value="2">2 soirs</option><option value="3">3 soirs</option><option value="4">4 soirs</option></select><div class="h-out" id="out-soir-total">—</div></div>
+  </div>
+
+  <div class="slabel">Mon week-end</div>
+  <div class="card">
+    <div class="we-grid">
+      <div class="we-col">
+        <div class="we-col-title">SAMEDI</div>
+        <div style="margin-bottom:8px;"><div class="field-label" style="margin-bottom:5px;font-size:12px;">Temps MDB dispo</div><select class="si" id="sam" onchange="calc()"><option value="0">Rien</option><option value="2">2h</option><option value="4">Demi-journée (4h)</option><option value="7">Journée complète (7h)</option></select></div>
+        <div><div class="field-label" style="margin-bottom:5px;font-size:12px;">Dont terrain / visites</div><select class="si" id="sam-terrain" onchange="calc()"><option value="0">Aucune</option><option value="1">1h terrain</option><option value="2">2h terrain</option><option value="3">3h terrain</option></select></div>
+      </div>
+      <div class="we-col">
+        <div class="we-col-title">DIMANCHE</div>
+        <div style="margin-bottom:8px;"><div class="field-label" style="margin-bottom:5px;font-size:12px;">Temps MDB dispo</div><select class="si" id="dim" onchange="calc()"><option value="0">Repos total</option><option value="1">1h max</option><option value="1.5">1h30</option><option value="2">Matinée (2h)</option></select></div>
+        <div><div class="field-label" style="margin-bottom:5px;font-size:12px;">Type d'activité</div><select class="si" id="dim-type"><option>Formation / lecture</option><option>Analyse biens en ligne</option><option>Recharge / cerveau off</option></select></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tl-wrap">
+    <div class="tl-title">VISUALISATION — TA SEMAINE TYPE</div>
+    <div class="legend-row">
+      <div class="leg"><div class="leg-dot" style="background:#444;"></div>Travail</div>
+      <div class="leg"><div class="leg-dot" style="background:var(--orange);"></div>Trajet</div>
+      <div class="leg"><div class="leg-dot" style="background:var(--yellow);"></div>MDB dispo</div>
+      <div class="leg"><div class="leg-dot" style="background:#222;border:1px solid #333;"></div>Libre / perso</div>
+    </div>
+    <div id="tl-container"></div>
+  </div>
+
+  <div class="card card-yellow">
+    <div class="slabel" style="margin-top:0;">Ton bilan temps MDB</div>
+    <div class="result-grid">
+      <div class="rc"><div class="rc-label">Trajets exploitables</div><div class="rc-val" id="r-trajets">—</div></div>
+      <div class="rc"><div class="rc-label">Pauses + soirées</div><div class="rc-val" id="r-soirees">—</div></div>
+      <div class="rc"><div class="rc-label">Week-end MDB</div><div class="rc-val" id="r-we">—</div></div>
+      <div class="rc"><div class="rc-label">Total / semaine</div><div class="rc-val yellow" id="r-total">—</div></div>
+      <div class="rc full"><div class="rc-label">Équivalent mensuel estimé</div><div class="rc-val" id="r-mensuel">—</div></div>
+    </div>
+    <div class="tip-box" id="tip"></div>
+  </div>
+</div>
+
+<!-- ===== 03 MON AGENDA ===== -->
+<div id="tab-agenda" class="pane">
+  <div class="slabel">Exemple — semaine type MDB</div>
+  <div class="card">
+    <p style="font-size:13px;color:#888;line-height:1.6;margin-bottom:14px;">L'objectif : que chaque créneau soit fléché avant que la semaine commence. Pas d'improvisation.</p>
+    <div class="legend-row">
+      <div class="leg"><div class="leg-dot" style="background:var(--yellow);"></div>Réseau</div>
+      <div class="leg"><div class="leg-dot" style="background:var(--green);"></div>Analyse</div>
+      <div class="leg"><div class="leg-dot" style="background:var(--blue);"></div>Formation</div>
+      <div class="leg"><div class="leg-dot" style="background:#666;"></div>Cerveau</div>
+      <div class="leg"><div class="leg-dot" style="background:var(--pink);"></div>Perso</div>
+    </div>
+    <div class="agenda-grid">
+      <div class="agenda-col"><div class="agenda-col-title">LUN — MAR — MER</div><div class="bloc reseau"><strong>Transports passif — 30-45 min</strong>Relances agents immo par vocal WhatsApp</div><div class="bloc analyse"><strong>Pause déjeuner — 20-30 min</strong>Pré-étude d'un dossier reçu par email</div><div class="bloc reseau"><strong>Soirée × 2 — 1h chaque</strong>Appels réseau, messages agents, suivi Mandat</div><div class="bloc formation"><strong>Soirée × 1 — 1h</strong>Formation, lecture, analyse de marché</div></div>
+      <div class="agenda-col"><div class="agenda-col-title">JEU — VEN</div><div class="bloc cerveau"><strong>Jeudi soir — 1h</strong>Revue hebdo : où j'en suis, relances en attente</div><div class="bloc analyse"><strong>Vendredi soir — 1h</strong>Moteur Immo : scan des nouvelles annonces</div><div class="bloc perso"><strong>Vendredi fin de soirée</strong>Temps perso — cerveau off</div></div>
+      <div class="agenda-col"><div class="agenda-col-title">SAMEDI</div><div class="bloc reseau"><strong>Matin 9h–11h</strong>Développement réseau : appels, nouveaux agents, notaires</div><div class="bloc analyse"><strong>Après-midi 14h–17h</strong>Étude de biens, DVF, sourcing mots-clés</div><div class="bloc perso"><strong>Soirée</strong>Sortie réseau ou temps perso</div></div>
+      <div class="agenda-col"><div class="agenda-col-title">DIMANCHE</div><div class="bloc formation"><strong>Matin 9h–10h30</strong>Formation ou lecture — cerveau frais</div><div class="bloc cerveau"><strong>Reste de la journée</strong>Repos. Un cerveau reposé prend de meilleures décisions.</div></div>
+    </div>
+  </div>
+
+  <div class="slabel">Ton agenda personnalisé</div>
+  <div class="card">
+    <p style="font-size:13px;color:#888;line-height:1.6;margin-bottom:14px;">Ce que tu vas vraiment faire — pas ce qui serait idéal.</p>
+    <div class="agenda-grid">
+      <div class="agenda-col"><div class="agenda-col-title">SEMAINE</div><div id="blocs-sem"></div><button class="add-btn" onclick="addBloc('sem')">+ Ajouter un créneau</button></div>
+      <div class="agenda-col"><div class="agenda-col-title">WEEK-END</div><div id="blocs-we"></div><button class="add-btn" onclick="addBloc('we')">+ Ajouter un créneau</button></div>
+    </div>
+  </div>
+
+  <div class="slabel">Mon engagement de la semaine</div>
+  <div class="card">
+    <input class="engagement-input" type="text" placeholder="Ex : Je contacte 5 agents immo d'ici vendredi..."/>
+    <input class="engagement-input" type="text" placeholder="Mon axe prioritaire cette semaine (réseau / analyse / financement)..."/>
+  </div>
+
+  <div class="slabel">Mon bilan profil</div>
+  <div class="card">
+    <div class="bilan-grid">
+      <div class="bilan-card"><div class="bilan-label">Mon profil type</div><input class="bilan-input" type="text" placeholder="Ex : Stratège en développement"/></div>
+      <div class="bilan-card"><div class="bilan-label">Mon axe faible n°1</div><input class="bilan-input" type="text" placeholder="Ex : Réseau professionnel"/></div>
+      <div class="bilan-card"><div class="bilan-label">Ma stratégie recommandée</div><input class="bilan-input" type="text" placeholder="Ex : Division / petits immeubles"/></div>
+      <div class="bilan-card"><div class="bilan-label">Mes fonds propres estimés</div><select class="si" style="margin-top:4px;font-size:13px;background:transparent;border:none;border-bottom:1px solid #333;border-radius:0;padding:0 0 4px;color:#fff;"><option>Moins de 20 000€</option><option>20 000 – 50 000€</option><option>50 000 – 150 000€</option><option>150 000€ et +</option></select></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 04 ÉTUDE DE SECTEUR ===== -->
+<div id="tab-secteur" class="pane">
+
+  <div class="highlight-box">
+    L'étude de secteur c'est croiser plusieurs sources — pas une seule vérité. Le vrai prix d'un bien c'est le prix que l'acheteur sera prêt à mettre. Multiplie les données pour trouver la tendance.
+  </div>
+
+  <!-- SOUS-ONGLETS -->
+  <div class="tool-tabs" style="margin-bottom:1.25rem;">
+    <button class="tool-tab active" onclick="switchSecteur('modeemploi',this)">Mode d'emploi</button>
+    <button class="tool-tab" onclick="switchSecteur('exercice',this)">Exercice de recherche</button>
+  </div>
+
+  <!-- MODE D'EMPLOI -->
+  <div id="secteur-modeemploi">
+
+    <div class="slabel" style="margin-top:0;">Les 6 étapes — dans cet ordre</div>
+
+    <div class="tip-card">
+      <div class="tip-card-header">
+        <div class="tip-num">01</div>
+        <div>
+          <div class="tip-title">Prix au m² — les sites de référence</div>
+          <div class="tip-desc">Commence par avoir une vision macro de ton secteur avant de plonger dans les annonces. Ces sites te donnent les prix moyens, l'évolution sur 1 an et la tension immobilière.</div>
+        </div>
+      </div>
+      <div class="tip-desc" style="margin-bottom:8px;">
+        — <strong style="color:#fff;">Meilleurs Agents</strong> : prix moyen au m² par commune, évolution, comparaison communes adjacentes<br>
+        — <strong style="color:#fff;">INSEE</strong> : revenus médians, démographie, évolution population<br>
+        — <strong style="color:#fff;">data.gouv.fr</strong> : données logement, équipements, statistiques territoriales
+      </div>
+      <div class="tip-tags">
+        <a href="https://www.meilleursagents.com" target="_blank" class="tag yellow" style="text-decoration:none;">Meilleurs Agents</a>
+        <a href="https://www.insee.fr/fr/statistiques" target="_blank" class="tag blue" style="text-decoration:none;">INSEE</a>
+        <a href="https://www.data.gouv.fr" target="_blank" class="tag gray" style="text-decoration:none;">data.gouv.fr</a>
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-card-header">
+        <div class="tip-num">02</div>
+        <div>
+          <div class="tip-title">Étude des annonces — prix affiché vs prix réel</div>
+          <div class="tip-desc">Le prix affiché n'est jamais le prix vendu. Il faut croiser les annonces actives avec les transactions réelles pour voir l'écart — c'est là que tu identifies ta marge de négociation.</div>
+        </div>
+      </div>
+      <div class="tip-desc" style="margin-bottom:8px;">
+        — <strong style="color:#fff;">Leboncoin</strong> : annonces actives, trier par ancienneté pour trouver les biens fatigués<br>
+        — <strong style="color:#fff;">Moteur Immo</strong> : agrège tous les sites, alertes prix, historique baisses de prix<br>
+        — <strong style="color:#fff;">DVF</strong> : prix de vente réels de toutes les transactions<br>
+        — <strong style="color:#fff;">ImmoSector AI</strong> : comparatif automatique DVF vs LBC sur ton secteur
+      </div>
+      <div class="tip-tags">
+        <a href="https://moteurimmo.fr" target="_blank" class="tag yellow" style="text-decoration:none;">Moteur Immo</a>
+        <a href="https://dvf.etalab.gouv.fr" target="_blank" class="tag green" style="text-decoration:none;">DVF</a>
+        <a href="https://immosector-ai.vercel.app" target="_blank" class="tag blue" style="text-decoration:none;">ImmoSector AI</a>
+        <a href="https://www.leboncoin.fr" target="_blank" class="tag gray" style="text-decoration:none;">Leboncoin</a>
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-card-header">
+        <div class="tip-num">03</div>
+        <div>
+          <div class="tip-title">Étude INSEE & données de la commune</div>
+          <div class="tip-desc">Comprendre qui habite ton secteur et comment il évolue. Un secteur avec une population qui vieillit n'a pas les mêmes opportunités qu'un secteur qui attire des jeunes actifs.</div>
+        </div>
+      </div>
+      <div class="tip-desc" style="margin-bottom:8px;">
+        Ce que tu cherches sur INSEE :<br>
+        — Revenus médians des ménages (qui peut acheter ?)<br>
+        — Évolution de la population sur 5-10 ans (secteur attractif ou déclinant ?)<br>
+        — Part de locataires vs propriétaires (marché locatif porteur ?)<br>
+        — Taux de vacance des logements (trop de vide = marché difficile)
+      </div>
+      <div class="tip-tags">
+        <a href="https://www.insee.fr/fr/statistiques" target="_blank" class="tag blue" style="text-decoration:none;">INSEE</a>
+        <a href="https://www.data.gouv.fr" target="_blank" class="tag gray" style="text-decoration:none;">data.gouv.fr</a>
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-card-header">
+        <div class="tip-num">04</div>
+        <div>
+          <div class="tip-title">Projets futurs de la commune</div>
+          <div class="tip-desc">Un secteur qui va accueillir une nouvelle ligne de tram, un centre commercial ou un grand employeur va voir ses prix monter. Anticiper ces projets c'est acheter avant la hausse.</div>
+        </div>
+      </div>
+      <div class="tip-desc" style="margin-bottom:8px;">
+        Ce que tu cherches :<br>
+        — Site de la mairie : projets urbains, ZAC, PLU, permis de construire<br>
+        — Recherche Google : "[ville] + nouveau quartier / tramway / gare / zone commerciale"<br>
+        — Le Moniteur, actu-immo : grands chantiers en cours ou prévus<br>
+        — Plan Local d'Urbanisme (PLU) : zones constructibles, règles de division, hauteurs autorisées
+      </div>
+      <div class="tip-tags">
+        <a href="https://www.lemoniteur.fr" target="_blank" class="tag orange" style="text-decoration:none;">Le Moniteur</a>
+        <span class="tag gray">Site mairie</span>
+        <span class="tag blue">PLU commune</span>
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-card-header">
+        <div class="tip-num">05</div>
+        <div>
+          <div class="tip-title">Analyser la concurrence MDB sur ton secteur</div>
+          <div class="tip-desc">Si d'autres marchands de biens opèrent sur ton secteur, c'est un signal positif — ça confirme qu'il y a du potentiel. Observe ce qu'ils achètent, comment ils valorisent, à quel prix ils revendent.</div>
+        </div>
+      </div>
+      <div class="tip-desc" style="margin-bottom:8px;">
+        Comment faire :<br>
+        — Instagram / LinkedIn : recherche "[ville] marchand de biens" ou "#marchededbiens[ville]"<br>
+        — Pappers Immo : voir qui a acheté quoi (propriétaires = sociétés = potentiellement MDB)<br>
+        — DVF : repérer les transactions fréquentes d'une même société = MDB actif<br>
+        — LBC / SeLoger : voir les biens proposés "par un professionnel" sur ton secteur
+      </div>
+      <div class="tip-tags">
+        <a href="https://immobilier.pappers.fr" target="_blank" class="tag orange" style="text-decoration:none;">Pappers Immo</a>
+        <span class="tag gray">Instagram</span>
+        <span class="tag blue">LinkedIn</span>
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-card-header">
+        <div class="tip-num">06</div>
+        <div>
+          <div class="tip-title">Étude des infrastructures avec Géoportail</div>
+          <div class="tip-desc">La carte, c'est tout. Géoportail te permet de superposer des dizaines de couches d'informations sur ton secteur pour comprendre ce qui fait la valeur d'un emplacement.</div>
+        </div>
+      </div>
+      <div class="tip-desc" style="margin-bottom:8px;">
+        Couches à activer sur Géoportail :<br>
+        — <strong style="color:#fff;">Écoles supérieures</strong> → potentiel coloc / studio étudiant<br>
+        — <strong style="color:#fff;">Hôpitaux & santé</strong> → locataires stables (soignants)<br>
+        — <strong style="color:#fff;">Transports en commun</strong> → zones Article L152-6 (division sans parking)<br>
+        — <strong style="color:#fff;">Foncier public / géomètres</strong> → divisions passées, plans disponibles<br>
+        — <strong style="color:#fff;">Urbanisme</strong> → zones PLU, constructibilité
+      </div>
+      <div class="tip-tags">
+        <a href="https://www.geoportail.gouv.fr" target="_blank" class="tag green" style="text-decoration:none;">Géoportail</a>
+        <span class="tag yellow">Article L152-6</span>
+        <span class="tag blue">PLU</span>
+      </div>
+    </div>
+
+    <div class="tip-card" style="border-color:rgba(29,158,117,0.3);">
+      <div class="tip-card-header">
+        <div class="tip-num">07</div>
+        <div>
+          <div class="tip-title">Confirmer les prix avec les pros — la source la plus fiable</div>
+          <div class="tip-desc">Les sites et les données DVF donnent des tendances. Mais la vérité du marché, elle est dans la bouche des gens qui font des transactions tous les jours. C'est irremplagable.</div>
+        </div>
+      </div>
+      <div class="tip-desc" style="margin-bottom:8px;">
+        À chaque occasion, pose ces questions :<br>
+        — <strong style="color:#fff;">Agents immobiliers</strong> : "À combien ça part vraiment sur ce secteur ? C'est rapide à vendre ?" → ils savent ce qui se signe, pas ce qui s'affiche<br>
+        — <strong style="color:#fff;">Notaires</strong> : "Quelles sont les tendances des actes que vous signez ?" → ils ont la vérité des prix nets vendeur<br>
+        — <strong style="color:#fff;">Géomètres experts</strong> : "Vous intervenez souvent sur ce type de bien ici ?" → indique si les divisions sont fréquentes<br>
+        — <strong style="color:#fff;">Voisins / habitants</strong> : "Vous savez à combien ça s'est vendu au 3ème ?" → souvent la donnée la plus fraîche<br>
+        — <strong style="color:#fff;">Autres investisseurs / MDB</strong> : "Tu es sur quel secteur en ce moment ? Tu trouves facilement ?" → intelligence terrain<br>
+        — <strong style="color:#fff;">Artisans et entrepreneurs</strong> : "Vous travaillez beaucoup dans ce quartier ? C'est qui qui vous contacte ?" → révèle qui rénove et pourquoi<br>
+        — <strong style="color:#fff;">Banquiers</strong> : "Vous financez souvent des projets sur ce secteur ?" → indique si les projets sont finançables
+      </div>
+      <div class="highlight-box" style="margin-top:10px;">
+        Règle d'or : chaque conversation avec un pro doit te rapporter au moins une donnée de prix ou une tendance que tu n'avais pas avant. Note-la immédiatement dans ton outil de gestion.
+      </div>
+      <div class="tip-tags">
+        <span class="tag green">Agents immo</span>
+        <span class="tag blue">Notaires</span>
+        <span class="tag gray">Géomètres</span>
+        <span class="tag orange">Voisins</span>
+        <span class="tag yellow">Autres MDB</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- EXERCICE DE RECHERCHE -->
+  <div id="secteur-exercice" style="display:none;">
+
+    <div class="highlight-box">
+      Choisis 2 ou 3 types de biens parmi les plus liquides de ton marché (ceux qui se vendent le plus vite selon ton étude). Applique le protocole complet sur chacun.
+    </div>
+
+    <div class="slabel" style="margin-top:0;">Protocole de recherche — à appliquer par type de bien</div>
+
+    <div class="tip-card">
+      <div class="tip-card-header"><div class="tip-num" style="font-size:28px;">A</div>
+        <div><div class="tip-title">Moteur Immo + DVF — prix affiché vs réel</div>
+        <div class="tip-desc">Va sur Moteur Immo, recherche ton type de bien sur ton secteur. Note les prix affichés. Ensuite va sur DVF et compare avec les prix réels de vente. L'écart = ta marge de négociation potentielle.</div></div>
+      </div>
+      <div class="tip-tags">
+        <a href="https://moteurimmo.fr" target="_blank" class="tag yellow" style="text-decoration:none;">Moteur Immo</a>
+        <a href="https://dvf.etalab.gouv.fr" target="_blank" class="tag green" style="text-decoration:none;">DVF</a>
+        <a href="https://immosector-ai.vercel.app" target="_blank" class="tag blue" style="text-decoration:none;">ImmoSector AI</a>
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-card-header"><div class="tip-num" style="font-size:28px;">B</div>
+        <div><div class="tip-title">Recherche par mots-clés — détecter les opportunités cachées</div>
+        <div class="tip-desc">Dans Moteur Immo ou Leboncoin catégorie Maison, utilise ces mots-clés pour détecter des biens divisés ou divisibles :</div></div>
+      </div>
+      <div class="kw-list" style="margin:10px 0;">
+        <span class="kw">studio</span><span class="kw">lots réunis</span><span class="kw">vendu libre</span><span class="kw">deux studios</span><span class="kw">appartements réunis</span><span class="kw">configuration possible</span><span class="kw">immeuble</span><span class="kw">multi-lots</span>
+      </div>
+      <div class="tip-desc" style="margin-bottom:8px;">
+        <strong style="color:#fff;">Astuce maisons de ville</strong> : filtre surface terrain max 100m² + surface habitable min 150m² → tu cibles les maisons sans jardin, moins de concurrence, prix plus bas, idéal pour la division.
+      </div>
+      <div class="tip-tags">
+        <a href="https://moteurimmo.fr" target="_blank" class="tag yellow" style="text-decoration:none;">Moteur Immo</a>
+        <a href="https://www.leboncoin.fr" target="_blank" class="tag gray" style="text-decoration:none;">Leboncoin</a>
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-card-header"><div class="tip-num" style="font-size:28px;">C</div>
+        <div><div class="tip-title">Pappers Immo — qui est derrière le bien ?</div>
+        <div class="tip-desc">Pour chaque bien repéré, recherche sur Pappers Immo. Tu obtiens l'historique des transactions, les DPE, les occupants et parfois le propriétaire. Si c'est une société, tu peux remonter jusqu'au gérant.</div></div>
+      </div>
+      <div class="tip-tags">
+        <a href="https://immobilier.pappers.fr" target="_blank" class="tag orange" style="text-decoration:none;">Pappers Immo</a>
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-card-header"><div class="tip-num" style="font-size:28px;">D</div>
+        <div><div class="tip-title">Les biens les plus vieux du marché — décotes à saisir</div>
+        <div class="tip-desc">Sur Moteur Immo, trie par annonces les plus anciennes. Un bien en ligne depuis 40+ mois avec des baisses répétées = vendeur motivé. Ces biens ont souvent -10% à -24% sous le prix marché.</div></div>
+      </div>
+      <div class="tip-desc" style="margin-bottom:8px;">
+        Ces biens sont boudés parce qu'ils ont été mal commercialisés ou qu'ils ne conviennent pas aux particuliers. Exactement là où un marchand de biens crée de la valeur.
+      </div>
+      <div class="tip-tags">
+        <span class="tag pink">-10% à -24% décote</span>
+        <a href="https://moteurimmo.fr" target="_blank" class="tag yellow" style="text-decoration:none;">Moteur Immo</a>
+      </div>
+    </div>
+
+    <div class="tip-card">
+      <div class="tip-card-header"><div class="tip-num" style="font-size:28px;">E</div>
+        <div><div class="tip-title">Analyse du PLU — est-ce que je peux diviser ?</div>
+        <div class="tip-desc">Avant de valider une opération de division, vérifie le PLU de ta commune. Certaines communes ont un "permis de diviser" obligatoire. D'autres sont en zone tendue et l'Article L152-6 s'applique.</div></div>
+      </div>
+      <div class="loi-card" style="margin-top:10px;">
+        <div class="loi-title">Article L151-36 — Plafond stationnement logements classiques</div>
+        <div class="loi-desc">1 place max par logement créé en zone bien desservie.</div>
+        <a class="loi-link" href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031211239" target="_blank">Lire sur Légifrance →</a>
+      </div>
+      <div class="loi-card" style="margin-top:8px;">
+        <div class="loi-title">Article L152-6 — Dérogation totale en zone tendue</div>
+        <div class="loi-desc">Dans 500m d'une gare ou métro → division sans obligation de stationnement. Droit privé, pas de permis.</div>
+        <a class="loi-link" href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043978020/2021-08-25" target="_blank">Lire sur Légifrance →</a>
+      </div>
+    </div>
+
+    <div class="tip-card" style="border-color:rgba(245,196,0,0.3);">
+      <div class="tip-card-header"><div class="tip-num" style="font-size:28px;">F</div>
+        <div><div class="tip-title">Compléter la grille de prix</div>
+        <div class="tip-desc">Une fois tes recherches A→E faites sur 2-3 types de biens, va dans l'onglet "Ma grille de prix" et complète les prix au m² pour chaque état. C'est ton référentiel secteur — garde-le précieusement.</div></div>
+      </div>
+      <div class="tip-box" style="margin-top:10px;">💡 Une fois tes recherches A→F terminées, télécharge le Google Sheets ci-dessous pour compléter ta grille de prix et garder une trace de ton étude.</div>
+    </div>
+
+  </div>
+
+  <!-- (grille et tips retirés) -->
+  <div id="secteur-tipscards-placeholder" style="display:none;">
+    <a class="app-link" href="https://immosector-ai.vercel.app/" target="_blank" style="margin-bottom:16px;">
+      <div class="app-link-icon" style="background:var(--green);color:#fff;font-size:12px;">AI</div>
+      <div>
+        <div class="app-link-text">ImmoSector AI — Analyse ton secteur avec l'IA</div>
+        <div class="app-link-url">immosector-ai.vercel.app</div>
+      </div>
+    </a>
+
+  <div class="slabel">Phase 1 — Cartographier son secteur</div>
+
+  <div class="tip-card">
+    <div class="tip-card-header">
+      <div class="tip-num">01</div>
+      <div><div class="tip-title">Géoportail — lire son secteur comme une carte</div><div class="tip-desc">Commence par visualiser ton secteur avec les bonnes couches. Active les écoles supérieures pour repérer où faire de la division étudiante. Active les hôpitaux pour cibler des locataires stables. Active les lignes de transports en commun pour identifier les zones Article L152-6.</div></div>
+    </div>
+    <div class="tip-desc" style="margin-bottom:8px;">Regarde aussi les communes adjacentes — souvent elles sont moins chères avec les mêmes atouts. Repère les prix au m² de chaque commune autour.</div>
+    <div class="tip-tags"><span class="tag yellow">Géoportail</span><span class="tag green">Écoles sup</span><span class="tag blue">Transports</span><span class="tag gray">Hôpitaux</span></div>
+  </div>
+
+  <div class="slabel">Phase 2 — Analyser les prix réels</div>
+
+  <div class="tip-card">
+    <div class="tip-card-header">
+      <div class="tip-num">02</div>
+      <div><div class="tip-title">Moteur Immo — le couteau suisse de l'annonce</div><div class="tip-desc">Moteur Immo agrège tous les sites d'annonces en un seul endroit. Crée des alertes prix au m² en dessous du marché — dès qu'une pépite passe, tu es alerté en premier.</div></div>
+    </div>
+    <div class="tip-desc" style="margin-bottom:8px;">Les fonctionnalités clés à utiliser :<br>
+    — <strong style="color:#fff;">Historique de publication</strong> : depuis quand l'annonce est en ligne ? Un bien en ligne depuis +3 mois est "fatigué" — les gens ne l'ont pas voulu, pose-toi la question pourquoi.<br>
+    — <strong style="color:#fff;">Baisses de prix</strong> : si le vendeur a baissé, il est en difficulté. Tu as de la marge à négocier.<br>
+    — <strong style="color:#fff;">Recherche inversée</strong> : tous les biens en un coup d'œil.<br>
+    — <strong style="color:#fff;">Stats par bien</strong> : DPE, surface, historique complet.</div>
+    <div class="tip-tags"><span class="tag yellow">Moteur Immo</span><span class="tag orange">Alertes prix</span><span class="tag pink">Biens fatigués</span></div>
+  </div>
+
+  <div class="tip-card">
+    <div class="tip-card-header">
+      <div class="tip-num">03</div>
+      <div><div class="tip-title">DVF + Logiciel Mathieu — prix affiché vs prix réel</div><div class="tip-desc">DVF (Demandes de Valeurs Foncières) montre les prix de vente réels — pas ceux affichés. C'est la base de données gouvernementale de toutes les transactions.</div></div>
+    </div>
+    <div class="tip-desc" style="margin-bottom:8px;">Le logiciel conçu pour l'incubateur fait ça automatiquement : il importe les données DVF ET les annonces Leboncoin, et compare les deux dans un dashboard. Tu vois immédiatement l'écart entre ce qui est affiché et ce qui se vend vraiment. 15-30 minutes de travail pour avoir une image claire de ton marché.<br><br>Tu peux aussi regarder <strong style="color:#fff;">les délais de vente</strong> : un bien vendu en 15 jours = liquide. Un bien vendu en 778 jours = attention, très peu liquide.</div>
+    <div class="tip-tags"><span class="tag blue">DVF</span><span class="tag yellow">Logiciel Mathieu</span><span class="tag green">Leboncoin</span></div>
+  </div>
+
+  <div class="tip-card">
+    <div class="tip-card-header">
+      <div class="tip-num">04</div>
+      <div><div class="tip-title">Pappers Immo — qui est derrière le bien ?</div><div class="tip-desc">Pappers Immo te donne les occupants d'un bien, l'historique des transactions DVF, les DPE, et parfois les propriétaires quand c'est une société. Ça peut te permettre de savoir avant même la visite si le vendeur est une SCI, une holding, etc.</div></div>
+    </div>
+    <div class="tip-desc">Si le propriétaire est une société, tu remontes jusqu'au gérant. C'est une information précieuse avant une négociation.</div>
+    <div class="tip-tags"><span class="tag orange">Pappers Immo</span><span class="tag gray">DPE</span><span class="tag blue">Historique</span></div>
+  </div>
+
+  <div class="slabel">Phase 3 — Sourcing par mots-clés</div>
+
+  <div class="tip-card">
+    <div class="tip-card-header">
+      <div class="tip-num">05</div>
+      <div><div class="tip-title">Les mots-clés qui trouvent les bonnes opérations</div><div class="tip-desc">Dans Leboncoin ou Moteur Immo, catégorie Maison, utilise ces mots-clés dans la barre de recherche pour détecter des biens divisés ou divisibles :</div></div>
+    </div>
+    <div class="kw-list">
+      <span class="kw">studio</span><span class="kw">lots réunis</span><span class="kw">vendu libre</span><span class="kw">deux studios</span><span class="kw">appartements réunis</span><span class="kw">configuration possible</span><span class="kw">immeuble</span><span class="kw">multi-lots</span>
+    </div>
+    <div class="tip-desc" style="margin-top:10px;">Astuce : dans Maison, mets <strong style="color:#fff;">surface terrain max 100m²</strong> + <strong style="color:#fff;">surface habitable min 150m²</strong> → tu cibles les maisons de ville sans jardin. Moins de concurrence des particuliers, prix plus bas, idéal pour la division.</div>
+    <div class="tip-tags" style="margin-top:8px;"><span class="tag yellow">Leboncoin</span><span class="tag green">Moteur Immo</span></div>
+  </div>
+
+  <div class="tip-card">
+    <div class="tip-card-header">
+      <div class="tip-num">06</div>
+      <div><div class="tip-title">Trier par "plus anciens" — les biens fatigués avec décote</div><div class="tip-desc">Dans Moteur Immo, trie par annonces les plus anciennes. Un bien en ligne depuis 40+ mois avec des baisses de prix répétées = le vendeur est motivé. Tu arrives avec une offre basse argumentée, et souvent ça passe.</div></div>
+    </div>
+    <div class="tip-desc">Les biens avec -10% à -24% sous le prix affiché = souvent la vraie affaire. Les gens les ont déjà vus, pensent que c'est mauvais — alors que c'est juste mal commercialisé au départ. C'est là que tu prends de la marge.</div>
+    <div class="tip-tags"><span class="tag pink">-15 à -24% décote</span><span class="tag yellow">Biens fatigués</span></div>
+  </div>
+
+  <div class="slabel">Phase 4 — Investiguer en profondeur</div>
+
+  <div class="tip-card">
+    <div class="tip-card-header">
+      <div class="tip-num">07</div>
+      <div><div class="tip-title">Foncier Public + Géomètre — les plans avant la visite</div><div class="tip-desc">Sur Géoportail → couche Foncier Public : tu vois tous les actes réalisés par des géomètres experts (divisions, états descriptifs, bornages). Clique sur un dossier et tu as le nom + numéro du géomètre qui est intervenu.</div></div>
+    </div>
+    <div class="tip-desc">Appelle le géomètre en disant que tu t'intéresses au bien, que tu sais qu'il a fait une division en 2023 — est-ce qu'il peut t'envoyer les plans ? Un coup sur deux, il dit oui. Tu as les plans de l'immeuble avant même de visiter. Game changer.</div>
+    <div class="tip-tags"><span class="tag blue">Foncier Public</span><span class="tag gray">Géomètre expert</span><span class="tag green">Plans immeuble</span></div>
+  </div>
+
+  <div class="tip-card">
+    <div class="tip-card-header">
+      <div class="tip-num">08</div>
+      <div><div class="tip-title">Bon de visite à distance — pré-filtrer sans se déplacer</div><div class="tip-desc">Si ton temps est limité, demande à l'agent un bon de visite à distance sans avoir visité. Ça te donne accès à tout le dossier : diagnostics, plans, situation locative. Tu fais ta pré-étude complète depuis chez toi.</div></div>
+    </div>
+    <div class="tip-desc">Tu visites seulement les biens qui passent ton filtre en ligne. Au début on visite beaucoup. Avec l'expérience, on visite peu — et chaque visite est pertinente.</div>
+    <div class="tip-tags"><span class="tag orange">Bon de visite</span><span class="tag yellow">Pré-étude</span></div>
+  </div>
+
+  <div class="slabel">L'Article clé — L152-6</div>
+  <div class="highlight-box" style="margin-bottom:10px;">
+    Dans un rayon de 500m d'une gare ou d'une station de transport en commun, tu peux diviser un bien <strong>sans justifier de places de stationnement</strong>. Tu es sur du droit privé — pas de permis, pas de DP. Vérifie si ta commune est concernée : c'est l'un des articles les plus puissants pour un marchand de biens en zone bien desservie.
+  </div>
+  <div class="loi-card">
+    <div class="loi-title">Article L151-36 — Logements classiques</div>
+    <div class="loi-desc">Plafond de 1 place de stationnement par logement créé dans les zones bien desservies par les transports. S'applique dans les opérations de division standard.</div>
+    <a class="loi-link" href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031211239" target="_blank">Lire sur Légifrance →</a>
+  </div>
+  <div class="loi-card">
+    <div class="loi-title">Article L152-6 — Dérogation totale en zone tendue</div>
+    <div class="loi-desc">Dérogation possible à l'obligation de stationnement dans un rayon de 500m d'une gare ou station de transport en commun. À vérifier selon ta commune — très puissant dès que tu es en zone bien desservie par les transports.</div>
+    <a class="loi-link" href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000043978020/2021-08-25" target="_blank">Lire sur Légifrance →</a>
+  </div>
+
+</div>
+
+
+<!-- ===== 06 CHECKLIST ===== -->
+<div id="tab-checklist" class="pane">
+
+  <div class="tool-tabs" style="margin-bottom:1.25rem;">
+    <button class="tool-tab active" onclick="switchCL('strategie',this)">Stratégie & Introspective</button>
+    <button class="tool-tab" onclick="switchCL('secteur',this)">Étude de Secteur</button>
+  </div>
+
+  <!-- CHECKLIST STRATÉGIE -->
+  <div id="cl-strategie">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1.5px;color:var(--white);">MA CHECKLIST — STRATÉGIE</div>
+      <button class="cl-reset" onclick="resetCL('s')">Réinitialiser</button>
+    </div>
+    <div class="progress-wrap"><div class="progress-bar" id="cl-progress-s" style="width:0%"></div></div>
+    <div class="progress-label" id="cl-label-s">0 / 13 complétés</div>
+    <div style="margin-top:16px;">
+
+      <div class="cl-group">
+        <div class="cl-group-title">PARTIE 1 — PROFIL & INTROSPECTIVE</div>
+        <div class="cl-item" onclick="toggleCL(this,'s')" data-id="s1">
+          <div class="cl-box"><span class="cl-check">✓</span></div>
+          <div class="cl-content"><div class="cl-num">01</div>
+          <div class="cl-text">Remplir le questionnaire profil MDB</div>
+          <div class="cl-sub">5 minutes — honnêtement. <a href="https://app-marchand-de-biens.onrender.com/" target="_blank" style="color:var(--yellow);">app-marchand-de-biens.onrender.com</a></div></div>
+        </div>
+        <div class="cl-item" onclick="toggleCL(this,'s')" data-id="s2">
+          <div class="cl-box"><span class="cl-check">✓</span></div>
+          <div class="cl-content"><div class="cl-num">02</div>
+          <div class="cl-text">Faire une introspective sur son expérience immo</div>
+          <div class="cl-sub">Achat RP, locatif, travaux, gestion ? Être précis et objectif.</div></div>
+        </div>
+        <div class="cl-item" onclick="toggleCL(this,'s')" data-id="s3">
+          <div class="cl-box"><span class="cl-check">✓</span></div>
+          <div class="cl-content"><div class="cl-num">03</div>
+          <div class="cl-text">Identifier ses points faibles</div>
+          <div class="cl-sub">Réseau ? Capital ? Temps ? Connaissances techniques ?</div></div>
+        </div>
+        <div class="cl-item" onclick="toggleCL(this,'s')" data-id="s4">
+          <div class="cl-box"><span class="cl-check">✓</span></div>
+          <div class="cl-content"><div class="cl-num">04</div>
+          <div class="cl-text">Identifier ses points forts</div>
+          <div class="cl-sub">Compétences, connaissance du secteur, réseau existant, expérience transférable.</div></div>
+        </div>
+      </div>
+
+      <div class="cl-group">
+        <div class="cl-group-title">PARTIE 2 — FINANCES & ENTOURAGE</div>
+        <div class="cl-item" onclick="toggleCL(this,'s')" data-id="s5">
+          <div class="cl-box"><span class="cl-check">✓</span></div>
+          <div class="cl-content"><div class="cl-num">05</div>
+          <div class="cl-text">Faire le point sur ses finances perso pour le MDB</div>
+          <div class="cl-sub">Épargne disponible, capacité d'emprunt, charges fixes, marge de manœuvre réelle.</div></div>
+        </div>
+        <div class="cl-item" onclick="toggleCL(this,'s')" data-id="s6">
+          <div class="cl-box"><span class="cl-check">✓</span></div>
+          <div class="cl-content"><div class="cl-num">06</div>
+          <div class="cl-text">Faire le point sur son réseau actuel immo</div>
+          <div class="cl-sub">Agents, notaires, artisans, banquiers, voisins investisseurs…</div></div>
+        </div>
+        <div class="cl-item" onclick="toggleCL(this,'s')" data-id="s7">
+          <div class="cl-box"><span class="cl-check">✓</span></div>
+          <div class="cl-content"><div class="cl-num">07</div>
+          <div class="cl-text">Faire le point sur les fonds disponibles autour de soi</div>
+          <div class="cl-sub">Love money, famille, amis proches — même 20K€ ça change tout.</div></div>
+        </div>
+        <div class="cl-item" onclick="toggleCL(this,'s')" data-id="s8">
+          <div class="cl-box"><span class="cl-check">✓</span></div>
+          <div class="cl-content"><div class="cl-num">08</div>
+          <div class="cl-text">Identifier ses potentiels associés & financeurs</div>
+          <div class="cl-sub">Lister 3 à 5 noms de personnes qui pourraient être intéressées.</div></div>
+        </div>
+      </div>
+
+      <div class="cl-group">
+        <div class="cl-group-title">PARTIE 3 — ORGANISATION & STRATÉGIE</div>
+        <div class="cl-item" onclick="toggleCL(this,'s')" data-id="s9">
+          <div class="cl-box"><span class="cl-check">✓</span></div>
+          <div class="cl-content"><div class="cl-num">09</div>
+          <div class="cl-text">Faire le point sur son emploi du temps actuel</div>
+          <div class="cl-sub">Onglet "Mon temps" — remplis-le honnêtement pour voir tes créneaux MDB.</div></div>
+        </div>
+        <div class="cl-item" onclick="toggleCL(this,'s')" data-id="s10">
+          <div class="cl-box"><span class="cl-check">✓</span></div>
+          <div class="cl-content"><div class="cl-num">10</div>
+          <div class="cl-text">Créer une nouvelle organisation pour son activité MDB</div>
+          <div class="cl-sub">Qu'est-ce que je peux sacrifier ? Blocs de temps fixes non négociables.</div></div>
+        </div>
+        <div class="cl-item" onclick="toggleCL(this,'s')" data-id="s11">
+          <div class="cl-box"><span class="cl-check">✓</span></div>
+          <div class="cl-content"><div class="cl-num">11</div>
+          <div class="cl-text">Mettre en place un outil d'organisation</div>
+          <div class="cl-sub">Mandat, Monday, Notion, Trello — UN seul endroit centralisé.</div></div>
+        </div>
+        <div class="cl-item" onclick="toggleCL(this,'s')" data-id="s12">
+          <div class="cl-box"><span class="cl-check">✓</span></div>
+          <div class="cl-content"><div class="cl-num">12</div>
+          <div class="cl-text">Construire son agenda type MDB semaine</div>
+          <div class="cl-sub">Onglet "Mon agenda" — blocs réels, pas théoriques.</div></div>
+        </div>
+        <div class="cl-item" onclick="toggleCL(this,'s')" data-id="s13">
+          <div class="cl-box"><span class="cl-check">✓</span></div>
+          <div class="cl-content"><div class="cl-num">13</div>
+          <div class="cl-text">Identifier le type d'opération pour lequel on se sent à l'aise</div>
+          <div class="cl-sub">Division ? Achat-revente ? Rénovation ? Multi-lots ? Choisir son terrain de jeu.</div></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="cl-congrats" id="cl-congrats-s">
+      <div class="cl-congrats-title">CHECKLIST STRATÉGIE COMPLÉTÉE 🎯</div>
+      <div class="cl-congrats-sub">Tu as fait le travail que la plupart ne feront jamais. Passe maintenant à l'étude de secteur.</div>
+    </div>
+    <div style="margin-top:20px;">
+      <div class="slabel" style="margin-top:0;">Télécharger</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <a class="dl-btn dl-yellow" href="https://raw.githubusercontent.com/greenbull-incubateur/kickoff-challenge-1/main/checklist_c1_strategie.xlsx" download>
+          <div class="dl-icon">XLS</div>
+          <div><div class="dl-title">Google Sheets Stratégie</div><div class="dl-sub">Cases à cocher · Zone notes · Progression auto</div></div>
+        </a>
+        <a class="dl-btn dl-yellow" href="https://raw.githubusercontent.com/greenbull-incubateur/kickoff-challenge-1/main/checklist_c1_strategie.pdf" download>
+          <div class="dl-icon">PDF</div>
+          <div><div class="dl-title">PDF imprimable</div><div class="dl-sub">Format A4 · Cases à cocher</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKLIST ÉTUDE DE SECTEUR -->
+  <div id="cl-secteur" style="display:none;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1.5px;color:var(--white);">MA CHECKLIST — ÉTUDE DE SECTEUR</div>
+      <button class="cl-reset" onclick="resetCL('e')">Réinitialiser</button>
+    </div>
+    <div class="progress-wrap"><div class="progress-bar" id="cl-progress-e" style="width:0%"></div></div>
+    <div class="progress-label" id="cl-label-e">0 / 15 complétés</div>
+    <div style="margin-top:16px;">
+
+      <div class="cl-group">
+        <div class="cl-group-title">PHASE 1 — CARTOGRAPHIER SON SECTEUR</div>
+        <div class="cl-item" onclick="toggleCL(this,'e')" data-id="e1">
+          <div class="cl-box"><span class="cl-check">✓</span></div>
+          <div class="cl-content"><div class="cl-num">01</div>
+          <div class="cl-text">Faire sa carte Géoportail</div>
+          <div class="cl-sub">Activer : écoles supérieures, hôpitaux, transports. Repérer les zones Article L152-6 (500m d'une gare).</div></div>
+        </div>
+        <div class="cl-item" onclick="toggleCL(this,'e')" data-id="e2">
+          <div class="cl-box"><span class="cl-check">✓</span></div>
+          <div class="cl-content"><div class="cl-num">02</div>
+          <div class="cl-text">Identifier 3 à 5 communes adjacentes + prix au m²</div>
+          <div class="cl-sub">Comparer les prix appartement et maison de chaque commune sur Meilleurs Agents.</div></div>
+        </div>
+        <div class="cl-item" onclick="toggleCL(this,'e')" data-id="e3">
+          <div class="cl-box"><span class="cl-check">✓</span></div>
+          <div class="cl-content"><div class="cl-num">03</div>
+          <div class="cl-text">Étude INSEE & données communes</div>
+          <div class="cl-sub">Revenus médians, évolution population, part locataires/propriétaires, taux de vacance.</div></div>
+        </div>
+        <div class="cl-item" onclick="toggleCL(this,'e')" data-id="e4">
+          <div class="cl-box"><span class="cl-check">✓</span></div>
+          <div class="cl-content"><div class="cl-num">04</div>
+          <div class="cl-text">Rechercher les projets futurs de la commune</div>
+          <div class="cl-sub">Tramway, ZAC, gare, zone commerciale, PLU. Site mairie + Le Moniteur + recherche Google.</div></div>
+        </div>
+      </div>
+
+      <div class="cl-group">
+        <div class="cl-group-title">PHASE 2 — ANALYSER LES PRIX RÉELS</div>
+        <div class="cl-item" onclick="toggleCL(this,'e')" data-id="e5">
+          <div class="cl-box"><span class="cl-check">✓</span></div>
+          <div class="cl-content"><div class="cl-num">05</div>
+          <div class="cl-text">Créer une alerte Moteur Immo prix bas</div>
+          <div class="cl-sub">Fixer un seuil sous le prix moyen du marché. Dès qu'une pépite passe, tu es alerté en premier.</div></div>
+        </div>
+        <div class="cl-item" onclick="toggleCL(this,'e')" data-id="e6">
+          <div class="cl-box"><span class="cl-check">✓</span></div>
+          <div class="cl-content"><div class="cl-num">06</div>
+          <div class="cl-text">Comparer prix affichés vs prix réels (DVF + ImmoSector AI)</div>
+          <div class="cl-sub">Mesurer l'écart en % entre annonces et transactions réelles. C'est ta marge de négociation.</div></div>
+        </div>
+        <div class="cl-item" onclick="toggleCL(this,'e')" data-id="e7">
+          <div class="cl-box"><span class="cl-check">✓</span></div>
+          <div class="cl-content"><div class="cl-num">07</div>
+          <div class="cl-text">Trouver 2-3 biens fatigués avec décote</div>
+          <div class="cl-sub">Trier par ancienneté sur Moteur Immo. Biens avec -10% à -24% = potentiel de marge.</div></div>
+        </div>
+      </div>
+
+      <div class="cl-group">
+        <div class="cl-group-title">PHASE 3 — SOURCING & INVESTIGATION</div>
+        <div class="cl-item" onclick="toggleCL(this,'e')" data-id="e8">
+          <div class="cl-box"><span class="cl-check">✓</span></div>
+          <div class="cl-content"><div class="cl-num">08</div>
+          <div class="cl-text">Faire 5 recherches par mots-clés + sélectionner 5 opportunités</div>
+          <div class="cl-sub">studio · lots réunis · vendu libre · deux studios · appartements réunis · multi-lots. Fiche par bien : lien, prix affiché, prix DVF, type d'opération.</div></div>
+        </div>
+        <div class="cl-item" onclick="toggleCL(this,'e')" data-id="e9">
+          <div class="cl-box"><span class="cl-check">✓</span></div>
+          <div class="cl-content"><div class="cl-num">09</div>
+          <div class="cl-text">Analyser la concurrence MDB + vérifier PLU + tester ImmoSector AI</div>
+          <div class="cl-sub">Instagram/LinkedIn recherche MDB sur ton secteur. PLU : zones constructibles, règles division. <a href="https://immosector-ai.vercel.app/" target="_blank" style="color:var(--yellow);">ImmoSector AI</a> pour synthèse rapide.</div></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="cl-congrats" id="cl-congrats-e">
+      <div class="cl-congrats-title">CHECKLIST SECTEUR COMPLÉTÉE 🎯</div>
+      <div class="cl-congrats-sub">Tu connais ton marché mieux que 95% des investisseurs de ta zone. Passe à la suite du challenge.</div>
+    </div>
+    <div style="margin-top:20px;">
+      <div class="slabel" style="margin-top:0;">Télécharger</div>
+      <a class="dl-btn dl-green" href="https://raw.githubusercontent.com/greenbull-incubateur/kickoff-challenge-1/main/etude_secteur_c1.xlsx" download style="display:flex;">
+        <div class="dl-icon">XLS</div>
+        <div><div class="dl-title">Google Sheets Étude de Secteur</div><div class="dl-sub">Grille de prix · Profil de marché · Liens utiles</div></div>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+</main>
+
+<footer>
+  Les Challenges de l'Incubateur — C1 Étude de Secteur & Stratégie · 03–13 Avril 2026
+</footer>
+
+<script>
+/* ===== TABS ===== */
+function goTab(id, btn) {
+  document.querySelectorAll('.nav-tab').forEach(function(b){ b.classList.remove('active'); });
+  document.querySelectorAll('.pane').forEach(function(p){ p.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById('tab-'+id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ===== TIMELINE ===== */
+var HOURS_LABELS=['6h','8h','10h','12h','14h','16h','18h','20h','22h'];
+var H_START=6,H_END=23,H_SPAN=H_END-H_START;
+function pct(h){ return ((h-H_START)/H_SPAN*100).toFixed(2)+'%'; }
+function pctW(h){ return (h/H_SPAN*100).toFixed(2)+'%'; }
+function toH(t){ var p=t.split(':'); return parseInt(p[0])+parseInt(p[1])/60; }
+function seg(left,width,cls){ var d=document.createElement('div'); d.className='tl-seg '+cls; d.style.left=left; d.style.width=width; return d; }
+
+function renderTL(debut,fin,tmV,tsV,pauseV,soirV,nbSoir,jours,tele){
+  var c=document.getElementById('tl-container'); if(!c) return; c.innerHTML='';
+  var jInt=parseFloat(jours),tlInt=parseFloat(tele);
+  var dayNames=['Lundi','Mardi','Mercredi','Jeudi','Vendredi'];
+  var workDays=dayNames.slice(0,Math.min(5,Math.round(jInt)));
+  var allDays=workDays.concat(['Samedi','Dimanche']);
+  var soirStart=fin+0.75,nbS=parseFloat(nbSoir);
+  allDays.forEach(function(day,i){
+    var wrap=document.createElement('div'); wrap.className='tl-day';
+    var lbl=document.createElement('div'); lbl.className='tl-day-label'; lbl.textContent=day;
+    var bar=document.createElement('div'); bar.className='tl-bar-wrap';
+    var isWork=i<workDays.length,isTele=isWork&&i<tlInt;
+    var isSam=day==='Samedi',isDim=day==='Dimanche';
+    if(isWork){
+      if(!isTele&&tmV>0) bar.appendChild(seg(pct(debut-tmV),pctW(tmV),'trajet'));
+      bar.appendChild(seg(pct(debut),pctW(fin-debut),'work'));
+      if(!isTele&&tsV>0) bar.appendChild(seg(pct(fin),pctW(tsV),'trajet'));
+      if(isTele&&tmV>0){ bar.appendChild(seg(pct(debut-tmV),pctW(tmV),'mdb')); bar.appendChild(seg(pct(fin),pctW(tsV),'mdb')); }
+      if(pauseV>0){ var ph=debut+(fin-debut)/2-pauseV/2; bar.appendChild(seg(pct(ph),pctW(pauseV),'mdb')); }
+      if(i<nbS&&soirV>0) bar.appendChild(seg(pct(soirStart),pctW(soirV),'mdb'));
+    } else if(isSam){
+      var sh=parseFloat(document.getElementById('sam').value);
+      if(sh>0) bar.appendChild(seg(pct(9),pctW(sh),'mdb'));
+    } else {
+      var dh=parseFloat(document.getElementById('dim').value);
+      if(dh>0) bar.appendChild(seg(pct(9),pctW(dh),'mdb'));
+    }
+    var hoursW=document.createElement('div'); hoursW.className='tl-hours';
+    HOURS_LABELS.forEach(function(h){ var s=document.createElement('span'); s.className='tl-hour'; s.textContent=h; hoursW.appendChild(s); });
+    wrap.appendChild(lbl); wrap.appendChild(bar); wrap.appendChild(hoursW);
+    c.appendChild(wrap);
+  });
+}
+
+function calc(){
+  var debut=toH(document.getElementById('heure-debut').value);
+  var fin=toH(document.getElementById('heure-fin').value);
+  var jours=document.getElementById('jours').value;
+  var tele=document.getElementById('teletravail').value;
+  var jInt=parseFloat(jours),tlInt=parseFloat(tele);
+  var joursPresence=Math.max(0,jInt-tlInt);
+  var tmV=parseFloat(document.getElementById('tm').value);
+  var tsV=parseFloat(document.getElementById('ts').value);
+  var pauseV=parseFloat(document.getElementById('pause').value);
+  var soirV=parseFloat(document.getElementById('soir').value);
+  var nbSoir=parseFloat(document.getElementById('nb-soir').value);
+  var samV=parseFloat(document.getElementById('sam').value);
+  var dimV=parseFloat(document.getElementById('dim').value);
+  function setOut(id,v){ var el=document.getElementById(id); if(!el)return; el.textContent=v>0?v+'h':'—'; el.className='h-out'+(v>0?' on':''); }
+  setOut('out-tm',tmV); setOut('out-ts',tsV); setOut('out-pause',pauseV); setOut('out-soir',soirV);
+  var soirTotal=soirV*nbSoir; setOut('out-soir-total',soirTotal);
+  var trajSem=(tmV+tsV)*joursPresence;
+  var pauseSem=pauseV*jInt;
+  var soirSem=soirTotal;
+  var we=samV+dimV;
+  var total=trajSem+pauseSem+soirSem+we;
+  document.getElementById('r-trajets').textContent=trajSem.toFixed(1)+'h';
+  document.getElementById('r-soirees').textContent=(pauseSem+soirSem).toFixed(1)+'h';
+  document.getElementById('r-we').textContent=we.toFixed(1)+'h';
+  document.getElementById('r-total').textContent=total.toFixed(1)+'h / sem';
+  document.getElementById('r-mensuel').textContent=Math.round(total*4)+'h / mois';
+  var tip=document.getElementById('tip');
+  if(total<4) tip.textContent='Ton temps est très serré ('+total.toFixed(1)+'h/sem). Concentre-toi sur 1 seule action : les relances agents. La régularité bat l\'intensité dispersée.';
+  else if(total<8) tip.textContent=total.toFixed(1)+'h/sem c\'est suffisant pour avancer. Bloque ces créneaux dans ton agenda maintenant — aussi fixes que ton boulot.';
+  else if(total<15) tip.textContent=total.toFixed(1)+'h/sem, c\'est un vrai potentiel. Garde au moins 1 journée sans MDB pour laisser le cerveau décanter.';
+  else tip.textContent=total.toFixed(1)+'h/sem c\'est beaucoup. Mieux vaut 10h bien utilisées que 20h dispersées. Respecte tes temps de recharge.';
+  renderTL(debut,fin,tmV,tsV,pauseV,soirV,nbSoir,jours,tele);
+}
+calc();
+
+/* ===== AGENDA CUSTOM ===== */
+var typeMap={reseau:'bloc reseau',analyse:'bloc analyse',formation:'bloc formation',cerveau:'bloc cerveau',perso:'bloc perso'};
+function addBloc(col){
+  var container=document.getElementById('blocs-'+col);
+  var div=document.createElement('div'); div.className='bloc-custom';
+  div.innerHTML='<select onchange="updateColor(this)" style="width:100%;margin-bottom:5px;color:#aaa;appearance:none;"><option value="reseau">Réseau agents</option><option value="analyse">Analyse biens</option><option value="formation">Formation</option><option value="cerveau">Cerveau dispo / revue</option><option value="perso">Perso / recharge</option></select><input type="text" placeholder="Créneau — ex : Sam matin 9h–11h" style="display:block;width:100%;margin-bottom:3px;color:#ccc;font-size:12px;"/><input type="text" placeholder="Ce que tu vas faire concrètement..." style="display:block;width:100%;color:#888;font-size:12px;"/>';
+  container.appendChild(div);
+}
+function updateColor(sel){
+  var p=sel.parentElement,type=sel.value;
+  p.className=typeMap[type];
+  var inputs=p.querySelectorAll('input');
+  inputs.forEach(function(inp){ inp.style.background='transparent'; inp.style.border='none'; inp.style.outline='none'; inp.style.color='inherit'; });
+  var ns=document.createElement('select');
+  ns.innerHTML=sel.innerHTML; ns.value=type;
+  ns.style.cssText='width:100%;margin-bottom:5px;background:transparent;border:none;outline:none;font-family:DM Sans,sans-serif;font-size:12px;color:inherit;appearance:none;';
+  ns.onchange=function(){ updateColor(ns); };
+  p.replaceChild(ns,sel);
+}
+
+/* ===== SECTEUR SOUS-ONGLETS ===== */
+function switchSecteur(id, btn){
+  var panes=['modeemploi','exercice','grille','tipscards'];
+  panes.forEach(function(p){ var el=document.getElementById('secteur-'+p); if(el) el.style.display='none'; });
+  var target=document.getElementById('secteur-'+id);
+  if(target) target.style.display='block';
+  if(btn){ document.querySelectorAll('.tool-tab').forEach(function(b){ if(b.onclick && b.onclick.toString().indexOf('switchSecteur')>-1) b.classList.remove('active'); }); btn.classList.add('active'); }
+  if(id==='grille') initGrille();
+}
+var grilleInit=false;
+var bienTypes=[
+  {l:'Studio / T1 (< 30 m²)',v:[1800,2200,2600,3000,3500]},
+  {l:'T2 (30-50 m²)',v:[1700,2100,2500,2900,3300]},
+  {l:'T3 (50-70 m²)',v:[1600,2000,2400,2800,3200]},
+  {l:'T4 / T5 (70-100 m²)',v:[1500,1900,2300,2700,3100]},
+  {l:'Maison < 100 m²',v:[1400,1800,2200,2600,3000]},
+  {l:'Maison 100-200 m²',v:[1300,1700,2100,2500,2900]},
+  {l:'Maison de ville sans jardin',v:[1100,1500,1900,2300,2700]},
+  {l:'Immeuble 2-4 lots',v:[900,1300,1700,2100,2500]},
+  {l:'Immeuble 5+ lots',v:[800,1200,1600,2000,2400]},
+  {l:'Garage / Box',v:[null,null,null,3000,5000]},
+];
+function initGrille(){
+  if(grilleInit) return; grilleInit=true;
+  var tbody=document.getElementById('grille-tbody');
+  if(!tbody) return;
+  bienTypes.forEach(function(b,i){
+    var tr=document.createElement('tr');
+    var td0=document.createElement('td'); td0.className='gt-label'; td0.textContent=b.l; tr.appendChild(td0);
+    b.v.forEach(function(v,j){
+      var td=document.createElement('td'); td.className='gt-cell';
+      var inp=document.createElement('input'); inp.type='number'; inp.placeholder=v||'N/A'; inp.value=v||'';
+      inp.id='g_'+i+'_'+j; inp.addEventListener('input',function(){calcAvg(i);});
+      td.appendChild(inp); tr.appendChild(td);
+    });
+    var tda=document.createElement('td'); tda.className='gt-avg-val'; tda.id='gavg_'+i; tr.appendChild(tda);
+    tbody.appendChild(tr); calcAvg(i);
+  });
+  // Profils
+  var profils2=[
+    {e:'🏠',l:'Résidence Principale',pct:30,c:'#378ADD'},
+    {e:'👶',l:'Primo-accédants',pct:20,c:'#1D9E75'},
+    {e:'💼',l:'Investisseurs locatifs',pct:25,c:'#F5C400'},
+    {e:'🏖️',l:'Résidence secondaire / Airbnb',pct:10,c:'#E07B20'},
+    {e:'🏢',l:'Investisseurs patrimoniaux',pct:8,c:'#7F77DD'},
+    {e:'🔨',l:'Autres MDB',pct:5,c:'#E24B4A'},
+    {e:'❓',l:'Autre profil',pct:2,c:'#888'},
+  ];
+  var pc=document.getElementById('profil-items'); if(!pc) return;
+  profils2.forEach(function(p,i){
+    var div=document.createElement('div'); div.className='profil-item-s';
+    div.innerHTML='<span style="font-size:18px;min-width:24px;">'+p.e+'</span>'+
+      '<span style="font-size:13px;font-weight:500;flex:1;color:var(--white);">'+p.l+'</span>'+
+      '<div class="profil-bar-bg"><div class="profil-bar-fg" id="pfg_'+i+'" style="width:'+p.pct+'%;background:'+p.c+';"></div></div>'+
+      '<input class="profil-pct-inp" type="number" id="pp_'+i+'" value="'+p.pct+'" min="0" max="100" oninput="calcProfils()"/>'+
+      '<span style="font-size:12px;color:#888;">%</span>';
+    pc.appendChild(div);
+  });
+  calcProfils();
+}
+function calcAvg(i){
+  var vals=[];
+  for(var j=0;j<5;j++){ var el=document.getElementById('g_'+i+'_'+j); if(el){ var v=parseFloat(el.value); if(!isNaN(v)&&v>0) vals.push(v); }}
+  var el=document.getElementById('gavg_'+i);
+  if(el) el.textContent=vals.length ? Math.round(vals.reduce(function(a,b){return a+b;},0)/vals.length).toLocaleString('fr-FR')+'€/m²' : '—';
+}
+function calcProfils(){
+  var total=0;
+  for(var i=0;i<7;i++){ var el=document.getElementById('pp_'+i); if(el){ var v=parseInt(el.value)||0; total+=v; var bar=document.getElementById('pfg_'+i); if(bar) bar.style.width=Math.min(v,100)+'%'; }}
+  var el=document.getElementById('total-marche');
+  if(el){ el.textContent='Total : '+total+'%'+(total===100?' ✅':''); el.className='total-marche'+(total!==100?' warn':''); }
+}
+/* ===== CHECKLIST DUAL ===== */
+var CL_TOTALS={s:13,e:15};
+function getCL(k){ try{ return JSON.parse(localStorage.getItem('cl-'+k)||'[]'); }catch(e){ return []; } }
+function saveCL(k,arr){ try{ localStorage.setItem('cl-'+k,JSON.stringify(arr)); }catch(e){} }
+function switchCL(id,btn){
+  document.getElementById('cl-strategie').style.display=id==='strategie'?'block':'none';
+  document.getElementById('cl-secteur').style.display=id==='secteur'?'block':'none';
+  document.querySelectorAll('#tab-checklist .tool-tab').forEach(function(b){ b.classList.remove('active'); });
+  if(btn) btn.classList.add('active');
+}
+function updateProgressCL(k){
+  var checked=getCL(k); var n=checked.length; var total=CL_TOTALS[k];
+  var pct=Math.round(n/total*100);
+  var bar=document.getElementById('cl-progress-'+k);
+  var lbl=document.getElementById('cl-label-'+k);
+  var cg=document.getElementById('cl-congrats-'+k);
+  if(bar) bar.style.width=pct+'%';
+  if(lbl) lbl.textContent=n+' / '+total+' complétés — '+pct+'%';
+  if(cg) cg.style.display=n===total?'block':'none';
+  var scope=document.getElementById(k==='s'?'cl-strategie':'cl-secteur');
+  if(!scope) return;
+  scope.querySelectorAll('.cl-item').forEach(function(item){
+    var id=item.getAttribute('data-id');
+    if(checked.indexOf(id)>-1) item.classList.add('done'); else item.classList.remove('done');
+  });
+}
+function toggleCL(el,k){
+  var id=el.getAttribute('data-id'); var checked=getCL(k);
+  var idx=checked.indexOf(id);
+  if(idx>-1) checked.splice(idx,1); else checked.push(id);
+  saveCL(k,checked); updateProgressCL(k);
+}
+function resetCL(k){ saveCL(k,[]); updateProgressCL(k); }
+updateProgressCL('s'); updateProgressCL('e');</script>
+</body>
+</html>
+8;--gray-200:#D0D0D0;--gray-100:#F2F2F2;
   --white:#FFFFFF;--green:#1D9E75;--blue:#378ADD;
   --pink:#D4537E;--orange:#E07B20;--radius:10px;--radius-sm:6px;
 }
